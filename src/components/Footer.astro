@@ -1,0 +1,114 @@
+---
+import { Icon } from 'astro-icon/components';
+import site from '../data/site.yaml';
+import { SITE_AUTHOR } from '../consts';
+
+interface Social {
+	label: string;
+	href: string;
+	icon: string;
+}
+
+const socials: Social[] = site.socials;
+const year = new Date().getFullYear();
+
+// Grouped link columns.
+const columns = [
+	{
+		heading: 'On this site',
+		links: [
+			{ label: 'Writing', href: '/writing/' },
+			{ label: 'Notes', href: '/notes/' },
+			{ label: 'Paper Drops', href: '/papers/' },
+		],
+	},
+	{
+		heading: 'Find me',
+		links: socials.map((s) => ({ label: s.label, href: s.href })),
+	},
+];
+---
+
+<footer>
+	<div class="inner">
+		<div class="cols">
+			{
+				columns.map((col) => (
+					<div class="col">
+						<p class="heading">{col.heading}</p>
+						<ul>
+							{col.links.map((l) => (
+								<li>
+									<a href={l.href}>{l.label}</a>
+								</li>
+							))}
+						</ul>
+					</div>
+				))
+			}
+		</div>
+
+		<ul class="socials">
+			{
+				socials.map((s) => (
+					<li>
+						<a href={s.href} rel="me noopener" target="_blank" aria-label={s.label}>
+							<Icon name={s.icon} />
+						</a>
+					</li>
+				))
+			}
+		</ul>
+
+		<p class="copy">© {SITE_AUTHOR}, {year}</p>
+	</div>
+</footer>
+
+<style>
+	footer {
+		border-top: 1px solid var(--border-light);
+		margin-top: 4rem;
+		background: var(--surface);
+	}
+	.inner {
+		width: min(100% - 2.5rem, var(--width));
+		margin: 0 auto;
+		padding: 2rem 0 3rem;
+	}
+	.cols {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		gap: 1.5rem 2rem;
+	}
+	.heading {
+		font-weight: 700;
+		color: var(--ink-strong);
+		font-size: 0.9rem;
+		margin: 0 0 0.5rem;
+	}
+	.cols ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.cols li {
+		font-size: 0.9rem;
+		padding: 0.1rem 0;
+	}
+	.socials {
+		display: flex;
+		gap: 1rem;
+		list-style: none;
+		padding: 0;
+		margin: 2rem 0 1rem;
+	}
+	.socials [data-icon] {
+		width: 1.2em;
+		height: 1.2em;
+	}
+	.copy {
+		color: var(--ink-soft);
+		font-size: 0.85rem;
+		margin: 0;
+	}
+</style>

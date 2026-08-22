@@ -1,0 +1,19 @@
+nav:
+  - { label: Writing, href: /writing/ }
+  - { label: Notes, href: /notes/ }
+  - { label: Paper Drops, href: /papers/ }
+  - { label: About, href: /about/ }
+
+socials:
+  - platform: github
+    label: GitHub
+    href: https://github.com/viveshy
+    icon: simple-icons:github
+  - platform: linkedin
+    label: LinkedIn
+    href: https://www.linkedin.com/in/viveshy
+    icon: simple-icons:linkedin
+  - platform: x
+    label: X
+    href: https://x.com/viveshy_
+    icon: simple-icons:x

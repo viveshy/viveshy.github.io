@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import TeaserList from '../components/TeaserList.astro';
+import { isPublished } from '../lib/entries';
+
+const writing = (await getCollection('writing')).filter((e) => isPublished(e));
+const notes = (await getCollection('notes')).filter((e) => isPublished(e));
+const papers = (await getCollection('papers')).filter((e) => isPublished(e));
+---
+
+<BaseLayout wide>
+	<section class="hero prose">
+		<h1>Hey, I am Vivesh</h1>
+		<p class="tagline">LLM systems, agents, and retrieval.</p>
+
+		<p>
+			I am an engineer working at the intersection of language models and
+			production systems — building the harness that keeps agents reliable
+			once they leave a notebook.
+		</p>
+		<p>
+			<em
+				>Replace this bio with your own. It lives in <code
+					>src/pages/index.astro</code
+				>.</em
+			>
+		</p>
+
+		<SocialLinks />
+	</section>
+
+	<TeaserList
+		heading="Writing"
+		blurb="Recent pieces."
+		more="/writing/"
+		moreLabel="All writings"
+		base="/writing"
+		entries={writing}
+		limit={5}
+	/>
+
+	<TeaserList
+		heading="Notes"
+		blurb="Topics I am working through, edited over time."
+		more="/notes/"
+		moreLabel="All notes"
+		base="/notes"
+		entries={notes}
+		limit={4}
+		dated={false}
+	/>
+
+	<TeaserList
+		heading="Paper Drops"
+		blurb="What I have been reading."
+		more="/papers/"
+		moreLabel="All papers"
+		base="/papers"
+		entries={papers}
+		limit={4}
+		linkField="driveUrl"
+		dateField="readDate"
+		showDate={false}
+	/>
+</BaseLayout>
+
+<style>
+	.hero h1 {
+		margin-top: 0;
+		font-weight: 700;
+	}
+	.tagline {
+		color: var(--ink-soft);
+		font-size: 1.15rem;
+		margin-top: -0.5rem;
+	}
+</style>

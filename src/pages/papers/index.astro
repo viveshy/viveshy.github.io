@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import ListPage from '../../layouts/ListPage.astro';
+import { isPublished } from '../../lib/entries';
+
+const entries = (await getCollection('papers')).filter((e) => isPublished(e));
+---
+
+{/* Sorted by readDate, newest first, but the date itself stays out of
+    the UI — the order already carries it. */}
+<ListPage
+	title="Paper Drops"
+	blurb="Papers I have read, most recent first. Each one opens on Drive."
+	base="/papers"
+	entries={entries}
+	linkField="driveUrl"
+	dateField="readDate"
+	showDate={false}
+/>

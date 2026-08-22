@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import EntryPage from '../../layouts/EntryPage.astro';
+import { cleanSlug } from '../../lib/slug';
+import { isPublished } from '../../lib/entries';
+
+export async function getStaticPaths() {
+	const entries = (await getCollection('books')).filter((e) => isPublished(e));
+	return entries.map((entry) => ({
+		params: { slug: cleanSlug(entry.id) },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { author, rating, year } = entry.data;
+---
+
+<EntryPage {...entry.data}>
+	<p slot="meta" class="book-meta">
+		{author}{year ? `, ${year}` : ''} · {'★'.repeat(rating)}{'☆'.repeat(5 - rating)}
+	</p>
+	<Content />
+</EntryPage>
+
+<style>
+	.book-meta {
+		color: var(--ink-soft);
+		font-size: 0.9rem;
+		margin-bottom: 2rem;
+	}
+</style>

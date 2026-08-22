@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import ListPage from '../../layouts/ListPage.astro';
+import { isPublished } from '../../lib/entries';
+
+const entries = (await getCollection('writing')).filter((e) => isPublished(e));
+---
+
+<ListPage
+	title="Writing"
+	blurb="On LLM systems, agents, and retrieval."
+	base="/writing"
+	entries={entries}
+/>

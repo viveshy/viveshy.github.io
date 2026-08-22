@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+	/** Absent on Notes, which are evergreen rather than published once. */
+	pubDate?: Date;
+	updatedDate?: Date;
+	canonicalUrl?: string;
+	/** Co-located image from the entry's own images/ folder. */
+	heroImage?: ImageMetadata;
+}
+
+const {
+	title,
+	description,
+	pubDate,
+	updatedDate,
+	canonicalUrl,
+	heroImage,
+} = Astro.props;
+---
+
+<BaseLayout
+	title={`${title} · Vivesh Yadav`}
+	description={description ?? title}
+	type="article"
+	pubDate={pubDate}
+	canonicalUrl={canonicalUrl}
+>
+	<article>
+		<header>
+			<h1>{title}</h1>
+			{
+				(pubDate || updatedDate) && (
+					<p class="meta">
+						{pubDate && <FormattedDate date={pubDate} />}
+						{updatedDate && (
+							<span>
+								{pubDate ? ' · updated ' : 'Updated '}
+								<FormattedDate date={updatedDate} />
+							</span>
+						)}
+					</p>
+				)
+			}
+		</header>
+
+		{
+			heroImage && (
+				<Image class="hero" src={heroImage} alt={title} widths={[640, 960]} loading="eager" />
+			)
+		}
+
+		<slot name="meta" />
+		<div class="prose">
+			<slot />
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	/* The entry title stays the largest thing on the page, above the
+	   1.5em h2s inside .prose. */
+	h1 {
+		margin-top: 0;
+		font-size: 2rem;
+	}
+	.meta {
+		color: var(--ink-soft);
+		font-size: 0.9rem;
+		margin: 0.25rem 0 2rem;
+	}
+	.hero {
+		width: 100%;
+		height: auto;
+		margin: 0 0 2rem;
+		border: 1px solid var(--border-light);
+		border-radius: 4px;
+	}
+</style>

@@ -1,0 +1,33 @@
+{
+  "name": "viveshy",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run",
+    "check:links": "node scripts/check-links.mjs dist"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^7.0.0",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.2",
+    "astro-icon": "^1.1.5",
+    "sharp": "^0.34.3",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@iconify-json/simple-icons": "^1.2.88",
+    "@iconify-json/tabler": "^1.2.35",
+    "@rollup/plugin-yaml": "^5.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}

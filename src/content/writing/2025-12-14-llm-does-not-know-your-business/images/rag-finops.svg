@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 582" width="720" height="582" role="img" aria-labelledby="t d">
+  <title id="t">RAG applied to a FinOps question</title>
+  <desc id="d">Internal FinOps documents are chunked and embedded into a vector store. A user question is used to retrieve the three relevant chunks, which are combined with the question and passed to the LLM. Without retrieval the model cannot answer; with retrieval it explains the NAT Gateway cost spike.</desc>
+
+
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="3.2" orient="auto">
+      <path d="M0,0 L8,3.2 L0,6.4 Z" fill="var(--ink-soft, #8b968c)"/>
+    </marker>
+  </defs>
+
+  <!-- ── Band 1: indexing, done once, ahead of time ───────────────── -->
+  <text fill="var(--ink-soft, #56605a)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" letter-spacing="1" x="0" y="14" font-size="12">INDEXING · AHEAD OF TIME</text>
+
+  <rect fill="none" stroke="var(--ink-soft, #5a655d)" stroke-width="1.5" x="0" y="26" width="150" height="54" rx="4"/>
+  <text fill="currentColor" x="75" y="48" font-size="14" text-anchor="middle" font-weight="600">Internal docs</text>
+  <text fill="var(--ink-soft, #56605a)" x="75" y="66" font-size="12" text-anchor="middle">Cost reports · logs</text>
+
+  <path fill="none" stroke="var(--ink-soft, #8b968c)" stroke-width="1.5" d="M150 53 L186 53" marker-end="url(#ar)"/>
+
+  <rect fill="none" stroke="var(--ink-soft, #5a655d)" stroke-width="1.5" x="192" y="26" width="120" height="54" rx="4"/>
+  <text fill="currentColor" x="252" y="48" font-size="14" text-anchor="middle" font-weight="600">Chunk</text>
+  <text fill="var(--ink-soft, #56605a)" x="252" y="66" font-size="12" text-anchor="middle">split into passages</text>
+
+  <path fill="none" stroke="var(--ink-soft, #8b968c)" stroke-width="1.5" d="M312 53 L348 53" marker-end="url(#ar)"/>
+
+  <rect fill="none" stroke="var(--ink-soft, #5a655d)" stroke-width="1.5" x="354" y="26" width="120" height="54" rx="4"/>
+  <text fill="currentColor" x="414" y="48" font-size="14" text-anchor="middle" font-weight="600">Embed</text>
+  <text fill="var(--ink-soft, #56605a)" x="414" y="66" font-size="12" text-anchor="middle">text → vectors</text>
+
+  <path fill="none" stroke="var(--ink-soft, #8b968c)" stroke-width="1.5" d="M474 53 L510 53" marker-end="url(#ar)"/>
+
+  <rect fill="none" stroke="var(--ink-soft, #5a655d)" stroke-width="1.5" x="516" y="26" width="146" height="54" rx="4"/>
+  <text fill="currentColor" x="589" y="48" font-size="14" text-anchor="middle" font-weight="600">Vector store</text>
+  <text fill="var(--ink-soft, #56605a)" x="589" y="66" font-size="12" text-anchor="middle">searchable index</text>
+
+  <!-- ── Band 2: the question ─────────────────────────────────────── -->
+  <text fill="var(--ink-soft, #56605a)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" letter-spacing="1" x="0" y="124" font-size="12">AT QUESTION TIME</text>
+
+  <rect fill="none" stroke="var(--border, #cfd8cc)" stroke-width="1.5" x="0" y="136" width="412" height="50" rx="4"/>
+  <text fill="currentColor" x="16" y="158" font-size="14" font-weight="600">Question</text>
+  <text fill="var(--ink-soft, #56605a)" x="16" y="176" font-size="13">“Why did NAT Gateway charges spike on February 12th?”</text>
+
+  <!-- question feeds retrieval; the store is searched -->
+  <path fill="none" stroke="var(--ink-soft, #8b968c)" stroke-width="1.5" d="M206 186 L206 214" marker-end="url(#ar)"/>
+  <path fill="none" stroke="var(--ink-soft, #8b968c)" stroke-width="1.5" stroke-dasharray="4 4" d="M589 80 L589 208 L440 208" marker-end="url(#ar)"/>
+
+  <!-- ── Band 3: retrieved context ────────────────────────────────── -->
+  <rect fill="none" stroke="var(--ink-soft, #5a655d)" stroke-width="1.5" x="0" y="220" width="412" height="112" rx="4"/>
+  <text fill="currentColor" x="16" y="242" font-size="14" font-weight="600">Retrieved context</text>
+  <text fill="var(--ink-soft, #56605a)" x="16" y="266" font-size="13">· VPC logs — 1.8 TB routed through the NAT Gateway</text>
+  <text fill="var(--ink-soft, #56605a)" x="16" y="288" font-size="13">· Cost report — 240% increase that day</text>
+  <text fill="var(--ink-soft, #56605a)" x="16" y="310" font-size="13">· FinOps note — ETL shipped without the S3 endpoint</text>
+
+  <text fill="var(--ink-soft, #56605a)" x="440" y="264" font-size="13">top-k passages,</text>
+  <text fill="var(--ink-soft, #56605a)" x="440" y="282" font-size="13">nearest the question</text>
+
+  <path fill="none" stroke="var(--ink-soft, #8b968c)" stroke-width="1.5" d="M206 332 L206 364" marker-end="url(#ar)"/>
+
+  <!-- ── Band 4: generation ───────────────────────────────────────── -->
+  <rect fill="none" stroke="var(--ink-soft, #5a655d)" stroke-width="1.5" x="0" y="370" width="412" height="46" rx="4"/>
+  <text fill="currentColor" x="206" y="399" font-size="14" text-anchor="middle" font-weight="600">LLM  ·  context + question</text>
+  <text fill="var(--ink-soft, #56605a)" x="440" y="399" font-size="13">the model reasons, it does not recall</text>
+
+  <path fill="none" stroke="var(--ink-soft, #8b968c)" stroke-width="1.5" d="M206 416 L206 448" marker-end="url(#ar)"/>
+
+  <!-- ── Band 5: with and without ─────────────────────────────────── -->
+  <rect fill="none" stroke="var(--border, #cfd8cc)" stroke-width="1.5" x="0" y="454" width="344" height="46" rx="4"/>
+  <text fill="var(--ink-soft, #8b968c)" x="16" y="474" font-size="13" font-weight="600">Without retrieval</text>
+  <text fill="var(--ink-soft, #56605a)" x="16" y="492" font-size="13">“I do not have enough information.”</text>
+
+  <rect fill="none" stroke="var(--accent, #b5501c)" stroke-width="1.5" x="0" y="510" width="720" height="68" rx="4"/>
+  <text fill="currentColor" x="16" y="530" font-size="13" font-weight="600">With retrieval</text>
+  <text fill="var(--ink-soft, #56605a)" x="16" y="548" font-size="13">“An ETL job shipped without the S3 Gateway Endpoint pushed 1.8 TB</text>
+  <text fill="var(--ink-soft, #56605a)" x="16" y="566" font-size="13">through the NAT Gateway — a 240% increase on February 12th.”</text>
+  </g>
+</svg>

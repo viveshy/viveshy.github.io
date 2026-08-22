@@ -1,0 +1,69 @@
+---
+import { Icon } from 'astro-icon/components';
+
+// Two states, matching arpitbhayani.me: a single sun/moon button that
+// flips light <-> dark and persists to localStorage. Defaults to light
+// when nothing is stored, as his does.
+---
+
+<button id="theme-toggle" type="button" aria-label="Toggle dark mode">
+	<span id="sun-icon"><Icon name="tabler:sun" /></span>
+	<span id="moon-icon"><Icon name="tabler:moon" /></span>
+</button>
+
+<script>
+	const KEY = 'theme';
+	const root = document.documentElement;
+	const btn = document.getElementById('theme-toggle');
+	const sun = document.getElementById('sun-icon');
+	const moon = document.getElementById('moon-icon');
+
+	function paint(mode: string) {
+		root.setAttribute('data-theme', mode);
+		if (sun && moon) {
+			sun.style.display = mode === 'dark' ? 'none' : 'inline-flex';
+			moon.style.display = mode === 'dark' ? 'inline-flex' : 'none';
+		}
+	}
+
+	paint(localStorage.getItem(KEY) ?? 'light');
+
+	btn?.addEventListener('click', () => {
+		const next =
+			root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+		localStorage.setItem(KEY, next);
+		paint(next);
+	});
+</script>
+
+<style>
+	/*
+	 * Nav links reserve 0.35rem of padding plus a 3px underline border
+	 * below their text. The bar centres its children, so without the same
+	 * bottom geometry this button sits about 4px lower than the link text
+	 * beside it. Matching the box, rather than nudging with a margin,
+	 * keeps them aligned if the underline weight ever changes.
+	 */
+	button {
+		display: inline-flex;
+		align-items: center;
+		background: none;
+		border: 0;
+		border-bottom: 3px solid transparent;
+		padding: 0 0.2em 0.35rem;
+		color: var(--ink);
+		cursor: pointer;
+		font: inherit;
+		line-height: 1;
+	}
+	button:hover {
+		color: var(--ink-strong);
+	}
+	button [data-icon] {
+		width: 1.15em;
+		height: 1.15em;
+	}
+	#moon-icon {
+		display: none;
+	}
+</style>

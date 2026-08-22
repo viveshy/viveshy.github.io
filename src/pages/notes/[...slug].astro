@@ -1,0 +1,21 @@
+---
+import { getCollection, render } from 'astro:content';
+import EntryPage from '../../layouts/EntryPage.astro';
+import { cleanSlug } from '../../lib/slug';
+import { isPublished } from '../../lib/entries';
+
+export async function getStaticPaths() {
+	const entries = (await getCollection('notes')).filter((e) => isPublished(e));
+	return entries.map((entry) => ({
+		params: { slug: cleanSlug(entry.id) },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<EntryPage {...entry.data}>
+	<Content />
+</EntryPage>

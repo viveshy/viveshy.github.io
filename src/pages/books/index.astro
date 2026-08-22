@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import ListPage from '../../layouts/ListPage.astro';
+import { isPublished } from '../../lib/entries';
+
+const entries = (await getCollection('books')).filter((e) => isPublished(e));
+---
+
+<ListPage
+	title="Book Drops"
+	blurb="Books worth the time, and what I took from them."
+	base="/books"
+	entries={entries}
+	showNotes
+/>

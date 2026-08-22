@@ -1,0 +1,336 @@
+/*
+ * Cool Mist: blue-grey paper, one deep indigo accent, no second colour.
+ *
+ * There is no link blue in the browser-default sense. WCAG only asks that
+ * links inside running text be distinguishable by something beyond
+ * colour, and the permanent underline does that — so body links are ink
+ * with an accent underline, and hovering fills them with the accent.
+ * One hue, doing real work.
+ *
+ * Type: Space Grotesk everywhere. Geist Pixel (SIL OFL, vendored) is
+ * limited to the wordmark — it is a dot-matrix display face, and on
+ * headings it cost real legibility, worst on the dark ground where thin
+ * pixel strokes suffer most from antialiasing. Both are declared in
+ * astro.config.mjs so they get metric-matched fallbacks; a hand-written
+ * @font-face for the pixel face made the wordmark reflow on load and
+ * dragged the nav sideways.
+ */
+:root {
+	--bg: #f4f7f9;
+	--surface: #ffffff;
+	--ink: #171b20;
+	--ink-strong: #000000;
+	--ink-soft: #586470;
+	--heading: #0e1216;
+	--border: #ccd6de;
+	--border-light: #e4ebf0;
+	--accent: #2f5c8f;
+	--code-bg: #eaf0f4;
+
+	--font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	--measure: 68ch;
+	--width: 768px;
+}
+
+:root[data-theme='dark'] {
+	--bg: #141820;
+	--surface: #1e242d;
+	--ink: #e4eaf0;
+	--ink-strong: #ffffff;
+	--ink-soft: #93a1af;
+	--heading: #ffffff;
+	--border: #303945;
+	--border-light: #3e4855;
+	--accent: #8fb8e5;
+	--code-bg: #12161d;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) {
+		--bg: #141820;
+		--surface: #1e242d;
+		--ink: #e4eaf0;
+		--ink-strong: #ffffff;
+		--ink-soft: #93a1af;
+		--heading: #ffffff;
+		--border: #303945;
+		--border-light: #3e4855;
+		--accent: #8fb8e5;
+		--code-bg: #12161d;
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 5rem;
+	/*
+	 * Reserve the scrollbar gutter. Without this a short page has no
+	 * scrollbar and a long one does, the viewport width changes by ~15px
+	 * between them, and since every container is centred with margin
+	 * auto the entire page — nav included — jumps sideways on each
+	 * navigation. arpitbhayani.me uses overflow-y: scroll for the same
+	 * reason; scrollbar-gutter reserves the space without painting an
+	 * empty track, with overflow-y as the fallback.
+	 */
+	overflow-y: scroll;
+}
+
+@supports (scrollbar-gutter: stable) {
+	html {
+		overflow-y: auto;
+		scrollbar-gutter: stable;
+	}
+}
+
+body {
+	margin: 0;
+	background-color: var(--bg);
+	color: var(--ink);
+	font-family: var(--font-sans);
+	font-size: 1em;
+	font-weight: 400;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+/*
+ * One container for the whole site, and it is deliberately close to the
+ * reading measure: at 960px against a 68ch (~640px) column, article
+ * pages filled the left two-thirds while list pages filled everything,
+ * so the content block appeared to move between page types. 768px keeps
+ * the difference small enough to read as one consistent column. `main` is always the same
+ * 960px box as the nav and footer, and prose is constrained inside it
+ * with max-width — so the article's left edge lines up with the wordmark
+ * instead of floating 130px further right, which is what centring a
+ * narrower column inside a wider page produced.
+ */
+main {
+	width: min(100% - 2.5rem, var(--width));
+	margin: 0 auto;
+	padding: 2.5rem 0 4rem;
+}
+
+main > * {
+	max-width: var(--measure);
+}
+
+/* Listing pages use the full container width. */
+main.wide > * {
+	max-width: none;
+}
+
+h1,
+h2,
+h3 {
+	line-height: 1.125; /* his .content heading line-height */
+	font-weight: 600;
+	color: var(--heading);
+	margin: 2rem 0 0.75rem;
+}
+
+/* His .title is 26px — page and entry headings, not prose headings. */
+h1 {
+	font-size: 1.625rem;
+}
+h2 {
+	font-size: 1.375rem;
+}
+h3 {
+	font-size: 1.125rem;
+}
+
+/*
+ * Article body type, taken from his `.blog-content`:
+ *   font-size: 1.125rem; line-height: 1.75; letter-spacing: -.011em
+ * The 1em/1.5 on `body` above is for UI chrome — nav, lists, footer —
+ * which is the same division his stylesheet makes. Reading text is 18px.
+ */
+.prose {
+	font-size: 1.125rem;
+	line-height: 1.75;
+	letter-spacing: -0.011em;
+}
+
+.prose p {
+	margin-bottom: 1.5rem;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+	margin-top: 1.8rem;
+	margin-bottom: 0.75rem;
+	line-height: 1.35;
+}
+
+/* em-relative, so these scale off the 18px prose size. */
+.prose h2 {
+	font-size: 1.5em;
+}
+.prose h3 {
+	font-size: 1.25em;
+}
+.prose h4 {
+	font-size: 1.1em;
+}
+
+.prose ul,
+.prose ol {
+	margin-bottom: 1.5rem;
+	padding-left: 1.5rem;
+}
+
+.prose li {
+	margin-bottom: 0.35rem;
+}
+
+a {
+	color: inherit;
+	cursor: pointer;
+	text-decoration: none;
+	text-underline-offset: 0.18em;
+	text-decoration-thickness: 1px;
+	transition:
+		text-decoration-color 120ms ease,
+		color 120ms ease;
+}
+
+a:hover,
+a:active {
+	color: var(--accent);
+	text-decoration: underline;
+	text-decoration-color: var(--accent);
+	text-decoration-thickness: 2px;
+}
+
+/*
+ * Links inside running text carry a permanent hairline underline. Colour
+ * alone fails WCAG 1.4.1 when a link sits mid-sentence with no other cue.
+ * Elsewhere — nav, list rows, footer — the link role is already obvious
+ * from position, so those stay clean until hovered.
+ */
+.prose a {
+	text-decoration: underline;
+	text-decoration-color: var(--accent);
+}
+
+:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+/* Default selection blue clashes with the green paper. */
+::selection {
+	background: var(--accent);
+	color: var(--surface);
+}
+
+code,
+pre {
+	font-family: var(--font-mono);
+	font-size: 0.9em;
+}
+
+code {
+	background: var(--code-bg);
+	border-radius: 3px;
+	padding: 0.1em 0.3em;
+}
+
+pre {
+	padding: 1rem;
+	overflow-x: auto;
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	background: var(--code-bg);
+}
+
+pre code {
+	background: none;
+	padding: 0;
+}
+
+blockquote {
+	margin: 1.5rem 0;
+	padding: 0.5rem 1rem;
+	border-left: 3px solid var(--border);
+	background: var(--surface);
+	color: var(--ink-soft);
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid var(--border-light);
+	margin: 2.5rem 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/*
+ * Inlined SVG diagrams. Inlined rather than served through <img> on
+ * purpose: an <img>-loaded SVG is an isolated document, so currentColor
+ * and CSS variables never reach it and the only theming mechanism left
+ * is prefers-color-scheme — which follows the OS, not this site's
+ * toggle. Get those out of step and the diagram paints near-white text
+ * on light paper. Inlined, it just inherits.
+ *
+ * Diagrams also break out past the reading measure to the full
+ * container, since a diagram sized for prose width ends up too small to
+ * read.
+ */
+.diagram {
+	display: block;
+	width: 100%;
+	max-width: var(--width);
+	height: auto;
+	margin: 2rem 0;
+	color: var(--ink);
+}
+
+@media (min-width: 1040px) {
+	.prose .diagram {
+		width: var(--width);
+		margin-left: calc((var(--measure) - var(--width)) / 2);
+	}
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	background: var(--surface);
+}
+
+th,
+td {
+	border-bottom: 1px solid var(--border);
+	padding: 0.5rem 0.75rem;
+	text-align: left;
+}
+
+/* Shiki emits --shiki-light / --shiki-dark; pick per theme. */
+code[data-theme],
+code[data-theme] span {
+	color: var(--shiki-light);
+}
+
+:root[data-theme='dark'] code[data-theme],
+:root[data-theme='dark'] code[data-theme] span {
+	color: var(--shiki-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) code[data-theme],
+	:root:not([data-theme='light']) code[data-theme] span {
+		color: var(--shiki-dark);
+	}
+}

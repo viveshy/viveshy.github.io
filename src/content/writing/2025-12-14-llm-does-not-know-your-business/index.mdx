@@ -1,0 +1,87 @@
+---
+title: "LLM Does Not Know Your Business"
+description: "When ChatGPT was launched in 2022, it was more than just another product. It was the beginning of a new chapter in technology. Some people immediately embraced it, while others…"
+pubDate: 2025-12-14
+canonicalUrl: https://www.linkedin.com/pulse/llm-does-know-your-business-i-vivesh-yadav-fxwyc
+---
+
+import RagDiagram from './images/rag-finops.svg';
+
+## Core Limitation
+
+When ChatGPT was launched in 2022, it was more than just another product. It was the beginning of a new chapter in technology. Some people immediately embraced it, while others denied it; however, almost everyone sensed that AI is the future and cannot be ignored.
+
+Software engineers, designers, content creators, marketers, teachers, lawyers, and medical professionals all started using large language models (LLMs) in their daily work. People discovered that AI (LLM) could help write code, simplify research, polish writing, explain difficult concepts, and boost productivity in surprising ways.
+
+Companies did not take long to notice the adoption of AI. If individuals were getting this much leverage from AI, companies wanted to capture that value at scale. They began exploring AI for very different reasons. Some wanted to analyze their internal data, and some wanted to provide smarter analytics to their customers.
+
+LLMs are smart, and their rapid adoption proved it. Companies quickly started integrating them into every workflow and every feature they could. AI became the need of the hour to stay competitive and relevant. But as usage increased, the limitations of LLMs began to surface:
+
+**a. Knowledge cut-off (parametric memory):** An LLM stores everything it knows inside its parameters. This is called parametric memory. In simple terms, it only knows the data it was trained on. Once training ends, that memory becomes fixed. The model has no awareness of new information, research, real-time updates, or evolving documentation unless it is retrained.
+
+The issue has already been addressed to a large extent. Modern AI systems, such as ChatGPT, Perplexity, and Grok, now include web search capabilities. With this, they can pull recent information from the internet and verify facts in real time.
+
+**b. No access to private or domain-specific data (non-parametric memory):** Internal knowledge, such as PDFs, wikis, architecture documents, support tickets, and proprietary datasets, exists outside the model. This is often referred to as non-parametric memory. Without an additional mechanism to connect to it, the model cannot use this knowledge during inference.
+
+This is exactly where companies run into a challenge: if the LLM has no access to their internal data, it simply cannot answer the questions that matter most to them.
+
+## LLM In Business
+
+Identifying the limitations of LLMs was never the hard part. Researchers already understood them. LLMs were designed to do exactly what they do today, and they perform that job remarkably well. They were never meant to store the entire world’s knowledge forever or learn new information on their own after training.
+
+The real challenge was figuring out how the companies could actually *use* LLMs in a meaningful way. They needed a solution that was low-cost, practical to operate, and capable of working with their own domain-specific knowledge.
+
+It is easy to understand why this happens. No LLM can answer questions about content it never saw during training. It has no natural access to internal documents, PDFs, wikis, codebases, or proprietary datasets that exist inside a company or an individual’s knowledge base. So, the company gets stuck here. How can the LLM know about the companies' data and answer accordingly?
+
+One idea is to feed all this information to the LLM as context. But there is an immediate constraint: ***LLMs have a context window***. We can only provide a limited amount of data. We cannot simply throw thousands of pages, dozens of PDFs, or years of documentation at the model every time we ask a question.
+
+So even though LLMs have become smarter and more connected through web search, the biggest remaining challenge is enabling them to use ***private, domain-specific knowledge that sits outside their parameter*s**.
+
+There are only a few possible ways to solve this challenge:
+
+1. **Build your own LLM and train it on internal data:** This offers maximum control, but it is the least practical for most organizations. Training a large language model from scratch costs millions of dollars, requires massive hardware and deep research expertise, and still needs continuous retraining to include new information. It is extremely expensive and not scalable.
+2. **Fine-tune a base model:** This can help the model adapt to a specific domain, but it becomes impractical when knowledge is constantly changing. Every update requires new data collection, retraining, and redeployment. It also risks overwriting previously learned information. Fine-tuning is expensive to maintain and does not scale well.
+3. **Retrieve relevant information and provide it to the model along with the query** Instead of forcing the model to store all knowledge inside its parameters, we fetch the needed information at query time and let the model use it for reasoning and generation. This approach is cost-effective and scalable, and it is known as ***RAG (Retrieval Augmented Generation)***.
+
+The first two options are not practical for most companies due to their high cost, and lack of scalability. So, the only realistic and efficient solution is to create RAG system. It allows companies to use their private and domain-specific knowledge with an LLM without rebuilding or constantly retraining a model.
+
+## RAG
+
+*RAG is not a model. It is a setup around a model.*
+
+In a normal interaction, you ask an LLM a question, and it gives you an answer based only on what it learned during training. With RAG, we change this process. Instead of sending only the query, we send **context + query** to the model. The job of the LLM is to use the context (external information) we provide and generate the response for the query based on that information.
+
+For example, imagine you want the LLM to answer questions based on your internal documentation. In a RAG setup, you do not expect the model to already “know” the content of those documents from training. You simply fetch the relevant part of the document and pass it along with your query. The model reads both (context + query) together and responds accordingly.
+
+
+So, the LLM remains the reasoning and language engine, but the facts come from the context we provide. We are not trying to make the model store everything in its parameters. We are giving it the required knowledge at the moment we ask the question. RAG can be simplified as:
+
+- **Retrieval → Fetch** relevant data from external sources.
+- **Augmented → Add** the fetched context to the query. This combined content becomes the input to the LLM.
+- **Generation → Create** the final answer using the context.
+
+## RAG In Action: A Scenario in FinOps Company
+
+<RagDiagram class="diagram" />
+
+Consider a FinOps company. They noticed that the NAT Gateway charges suddenly spiked on February 12th. This information is completely internal. It is included in their AWS cost reports, ETL logs, VPC flow logs, and FinOps investigation documents. No public LLM has access to any of this during training.
+
+If they ask a normal LLM, “Why did NAT Gateway charges spike on February 12th?”, the model has no idea. The only correct answer it can give is: “I do not have enough information.”
+
+RAG helps in this case. The system searches the company’s internal documents and retrieves the relevant pieces of information relevant to the query(Why did NAT Gateway charges spike on February 12th?), such as:
+
+- logs showing that 1.8 TB of traffic flowed through the NAT Gateway,
+- cost reports confirming a 240 percent increase on that day,
+- An internal FinOps note explaining that an ETL pipeline was deployed without the S3 Gateway Endpoint.
+
+These small chunks of information (context) are then added to the query (the question asked) and passed to the LLM. The LLM reads the context and generates an answer based on the internal data the organization provided
+
+## Takeaway
+
+RAG lets companies use LLMs with their private, domain-specific data without building or retraining models. It's the most practical way to make AI useful for real business questions.
+
+If you're exploring how to bring AI into your company, you can just start with RAG.
+
+---
+
+*P.S.The cover image and RAG pipeline diagram were generated by Claude and Gemini, respectively. The draft of the article was enhanced by ChatGPT.*

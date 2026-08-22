@@ -1,0 +1,44 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+interface Props {
+	title?: string;
+	description?: string;
+	wide?: boolean;
+	type?: 'website' | 'article';
+	pubDate?: Date;
+	canonicalUrl?: string;
+}
+
+const {
+	title = SITE_TITLE,
+	description = SITE_DESCRIPTION,
+	wide = false,
+	type,
+	pubDate,
+	canonicalUrl,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			type={type}
+			pubDate={pubDate}
+			canonicalUrl={canonicalUrl}
+		/>
+	</head>
+	<body>
+		<Nav />
+		<main class={wide ? 'wide' : ''}>
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>

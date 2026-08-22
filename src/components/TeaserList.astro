@@ -1,0 +1,101 @@
+---
+import EntryRow from './EntryRow.astro';
+import { byNewest, byOrder } from '../lib/entries';
+import { cleanSlug } from '../lib/slug';
+
+interface Props {
+	heading: string;
+	/** One line under the heading, e.g. "Things I have written recently." */
+	blurb: string;
+	more: string;
+	moreLabel: string;
+	base: string;
+	entries: any[];
+	limit?: number;
+	/** Notes are undated — arranged by `order`, shown without a date. */
+	dated?: boolean;
+	/** Read the href from this frontmatter field and open it externally. */
+	linkField?: string;
+	/** Frontmatter field holding the date. Papers use `readDate`. */
+	dateField?: string;
+	/**
+	 * Sorting and display are separate concerns. Paper Drops sort by
+	 * readDate but do not show it — the order carries the recency, and a
+	 * date on every row is noise in a reading log.
+	 */
+	showDate?: boolean;
+}
+
+const {
+	heading,
+	blurb,
+	more,
+	moreLabel,
+	base,
+	entries,
+	limit = 5,
+	dated = true,
+	linkField,
+	dateField = 'pubDate',
+	showDate = true,
+} = Astro.props;
+const shown = (dated ? byNewest(entries, dateField) : byOrder(entries)).slice(0, limit);
+---
+
+<section>
+	{/* "Recent blog posts • Full archive ➔" — his header format. */}
+	<p class="head">
+		<span class="heading">{heading}</span>
+		<span class="dot">•</span>
+		<a href={more}>{moreLabel} ➔</a>
+	</p>
+	<p class="blurb">{blurb}</p>
+	<ul>
+		{
+			shown.map((entry) => (
+				<EntryRow
+					href={linkField ? entry.data[linkField] : `${base}/${cleanSlug(entry.id)}/`}
+					external={Boolean(linkField)}
+					title={entry.data.title}
+					date={dated && showDate ? entry.data[dateField] : undefined}
+				/>
+			))
+		}
+	</ul>
+</section>
+
+<style>
+	section {
+		margin-top: 2.5rem;
+	}
+	.head {
+		display: flex;
+		align-items: baseline;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		margin: 0;
+	}
+	.heading {
+		font-weight: 700;
+		color: var(--ink-strong);
+		font-size: 1.05rem;
+	}
+	.dot,
+	.head a {
+		font-size: 0.9rem;
+	}
+	.dot {
+		color: var(--ink-soft);
+	}
+	.blurb {
+		color: var(--ink-soft);
+		font-size: 0.9rem;
+		margin: 0.15rem 0 0.75rem;
+	}
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		border-top: 1px solid var(--border-light);
+	}
+</style>

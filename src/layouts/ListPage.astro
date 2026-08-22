@@ -1,0 +1,106 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import EntryRow from '../components/EntryRow.astro';
+import { cleanSlug } from '../lib/slug';
+import { byNewest, byOrder } from '../lib/entries';
+
+interface Props {
+	title: string;
+	blurb: string;
+	/** URL prefix, e.g. "/writing". */
+	base: string;
+	entries: any[];
+	/** Render each entry's full note inline (papers, books). */
+	showNotes?: boolean;
+	/**
+	 * Notes have no pubDate — they are arranged by `order` and show no
+	 * date, since an evergreen page has no single publication moment.
+	 */
+	dated?: boolean;
+	/**
+	 * Rows link somewhere else entirely — read this frontmatter field for
+	 * the href and open it in a new tab. Paper Drops point at Drive.
+	 */
+	linkField?: string;
+	/** Frontmatter field holding the date. Papers use `readDate`. */
+	dateField?: string;
+	/**
+	 * Sorting and display are separate concerns. Paper Drops sort by
+	 * readDate but do not show it — the order carries the recency, and a
+	 * date on every row is noise in a reading log.
+	 */
+	showDate?: boolean;
+}
+
+const {
+	title,
+	blurb,
+	base,
+	entries,
+	showNotes = false,
+	dated = true,
+	linkField,
+	dateField = 'pubDate',
+	showDate = true,
+} = Astro.props;
+const sorted = dated ? byNewest(entries, dateField) : byOrder(entries);
+
+// Note-carrying collections render their body in full on the list page,
+// so the section is readable without clicking through.
+const rows = await Promise.all(
+	sorted.map(async (entry) => ({
+		entry,
+		Note: showNotes ? (await render(entry)).Content : null,
+	})),
+);
+---
+
+<BaseLayout title={`${title} · Vivesh Yadav`} description={blurb} wide>
+	<h1>
+		{title}
+		<span class="count">({rows.length})</span>
+	</h1>
+	<p class="blurb">{blurb}</p>
+
+	{rows.length === 0 && <p class="blurb">Nothing here yet.</p>}
+
+	<ul class="list">
+		{
+			rows.map(({ entry, Note }) => (
+				<EntryRow
+					href={linkField ? entry.data[linkField] : `${base}/${cleanSlug(entry.id)}/`}
+					external={Boolean(linkField)}
+					title={entry.data.title}
+					date={dated && showDate ? entry.data[dateField] : undefined}
+					note={showNotes ? undefined : entry.data.description}
+				>
+					{Note && <Note />}
+				</EntryRow>
+			))
+		}
+	</ul>
+</BaseLayout>
+
+<style>
+	h1 {
+		font-weight: 700;
+	}
+	.count {
+		font-family: var(--font-mono);
+		color: var(--ink-soft);
+		font-size: 0.7em;
+		font-weight: 400;
+		margin-left: 0.35em;
+	}
+	.blurb {
+		color: var(--ink-soft);
+		margin-bottom: 2rem;
+	}
+	.list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		border-top: 1px solid var(--border-light);
+	}
+</style>

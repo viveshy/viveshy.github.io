@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Content, frontmatter } from '../content/about.mdx';
+---
+
+<BaseLayout
+	title={`${frontmatter.title} · Vivesh Yadav`}
+	description={frontmatter.description}
+>
+	<h1>{frontmatter.title}</h1>
+	<div class="prose">
+		<Content />
+	</div>
+</BaseLayout>

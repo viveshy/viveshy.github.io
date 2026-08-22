@@ -1,0 +1,84 @@
+---
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+	href: string;
+	title: string;
+	/** Omitted for undated collections such as Notes. */
+	date?: Date;
+	note?: string;
+	/** Opens in a new tab and shows an outbound marker. */
+	external?: boolean;
+}
+
+const { href, title, date, note, external = false } = Astro.props;
+
+// noopener is the security-relevant half: without it the opened page can
+// reach back through window.opener. noreferrer keeps the referrer off.
+const outbound = external
+	? { target: '_blank', rel: 'noopener noreferrer' }
+	: {};
+
+// Note-carrying collections pass their rendered body through the slot
+// instead of the `note` string.
+const hasSlottedNote = Astro.slots.has('default');
+---
+
+<li class="row">
+	<p class="line">
+		{
+			date && (
+				<>
+					<FormattedDate date={date} />
+					<span class="sep">:</span>
+				</>
+			)
+		}
+		<a href={href} {...outbound}>
+			{title}
+			{external && <span class="out" aria-label="opens in a new tab">↗</span>}
+		</a>
+	</p>
+	{note && <p class="note">{note}</p>}
+	{
+		hasSlottedNote && (
+			<div class="note">
+				<slot />
+			</div>
+		)
+	}
+</li>
+
+<style>
+	.row {
+		padding: 0.6rem 0;
+		border-bottom: 1px solid var(--border);
+	}
+	.line {
+		margin: 0;
+		display: flex;
+		gap: 0.5em;
+		flex-wrap: wrap;
+	}
+	/* Monospace dates so they form a clean column down the list. */
+	.line time,
+	.sep {
+		font-family: var(--font-mono);
+		color: var(--ink-soft);
+		font-size: 0.85rem;
+		white-space: nowrap;
+	}
+	.note {
+		margin: 0.25rem 0 0;
+		color: var(--ink-soft);
+		font-size: 0.9rem;
+	}
+	.note :global(p) {
+		margin: 0.25rem 0;
+	}
+	.out {
+		color: var(--ink-soft);
+		font-size: 0.8em;
+		margin-left: 0.25em;
+	}
+</style>

@@ -1,0 +1,91 @@
+---
+import site from '../data/site.yaml';
+import ThemeToggle from './ThemeToggle.astro';
+import { SITE_TITLE } from '../consts';
+
+interface NavItem {
+	label: string;
+	href: string;
+}
+
+const nav: NavItem[] = site.nav;
+const path = Astro.url.pathname;
+---
+
+<header>
+	<div class="bar">
+		<a class="brand" href="/">{SITE_TITLE}</a>
+		<nav>
+			{
+				nav.map((item) => (
+					<a
+						href={item.href}
+						class={path.startsWith(item.href) ? 'active' : ''}
+						aria-current={path.startsWith(item.href) ? 'page' : undefined}
+					>
+						{item.label}
+					</a>
+				))
+			}
+		</nav>
+		<ThemeToggle />
+	</div>
+</header>
+
+<style>
+	header {
+		border-bottom: 1px solid var(--border);
+	}
+	.bar {
+		width: min(100% - 2.5rem, var(--width));
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+		padding: 1rem 0;
+	}
+	/* Same bottom geometry as the nav links, so all three groups in the
+	   bar share one optical baseline under align-items: center. */
+	.brand {
+		font-family: var(--font-pixel);
+		font-size: 1.1rem;
+		color: var(--ink-strong);
+		letter-spacing: 0.02em;
+		padding-bottom: 0.35rem;
+		border-bottom: 3px solid transparent;
+	}
+	nav {
+		display: flex;
+		gap: 1.35rem;
+		margin-left: auto;
+		flex-wrap: wrap;
+	}
+	/* Sentence case, semibold, with the active item underlined — the
+	   shape the reference screenshots use. */
+	/* The underline is a border, not text-decoration, so hover can preview
+	   the active state at reduced weight without shifting anything. */
+	nav a {
+		color: var(--ink);
+		font-size: 0.95rem;
+		font-weight: 600;
+		padding-bottom: 0.35rem;
+		text-decoration: none;
+		border-bottom: 3px solid transparent;
+		transition:
+			border-bottom-color 120ms ease,
+			color 120ms ease;
+	}
+	nav a:hover {
+		color: var(--accent);
+		text-decoration: none;
+		border-bottom-color: color-mix(in srgb, var(--accent) 40%, transparent);
+	}
+	nav a.active {
+		color: var(--ink-strong);
+		border-bottom-color: var(--accent);
+	}
+	.brand {
+		text-decoration: none;
+	}
+</style>

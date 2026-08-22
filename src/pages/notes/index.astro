@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import ListPage from '../../layouts/ListPage.astro';
+import { isPublished } from '../../lib/entries';
+
+const entries = (await getCollection('notes')).filter((e) => isPublished(e));
+---
+
+{/* Undated: notes are topic pages you keep editing, not dated entries. */}
+<ListPage
+	title="Notes"
+	blurb="Working notes on things I am trying to understand. Kept in the open, edited as I learn more."
+	base="/notes"
+	entries={entries}
+	dated={false}
+/>

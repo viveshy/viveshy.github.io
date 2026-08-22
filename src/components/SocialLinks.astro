@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon/components';
+import site from '../data/site.yaml';
+
+interface Social {
+	platform: string;
+	label: string;
+	href: string;
+	icon: string;
+}
+
+const socials: Social[] = site.socials;
+---
+
+<ul class="socials">
+	{
+		socials.map((s) => (
+			<li>
+				<a href={s.href} rel="me noopener" target="_blank">
+					<Icon name={s.icon} />
+					<span>{s.label}</span>
+				</a>
+			</li>
+		))
+	}
+</ul>
+
+<style>
+	.socials {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.25rem;
+		list-style: none;
+		padding: 0;
+		margin: 1.25rem 0;
+	}
+	.socials a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4em;
+		font-size: 0.9rem;
+	}
+	.socials [data-icon] {
+		width: 1.05em;
+		height: 1.05em;
+	}
+</style>
