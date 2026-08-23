@@ -44,9 +44,9 @@ land on a request-access screen.
 **Writing** is dated and stacked newest-first — anything from a couple of
 paragraphs to a long essay.
 
-**Notes** are principles — positions held and argued for, not write-ups.
-Short, assertive, one claim per note. The idea is borrowed from
-[leerob.com](https://leerob.com)'s beliefs page.
+**Notes** are principles you stand for and advocate — positions, not
+write-ups. Short and assertive, one claim per note. The idea is borrowed
+from [leerob.com](https://leerob.com)'s beliefs page.
 
 Both are dated and sorted newest first. Notes make `description`
 optional, since a principle is often shorter than a summary of it.

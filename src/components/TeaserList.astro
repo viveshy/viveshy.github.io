@@ -38,9 +38,10 @@ const {
 	dateField = 'pubDate',
 	showDate = true,
 } = Astro.props;
-const shown = (byNewest(entries, dateField)).slice(0, limit);
+const shown = byNewest(entries, dateField).slice(0, limit);
 ---
 
+{shown.length > 0 && (
 <section>
 	<p class="head">
 		<span class="heading">{heading}</span>
@@ -60,6 +61,7 @@ const shown = (byNewest(entries, dateField)).slice(0, limit);
 		}
 	</ul>
 </section>
+)}
 
 <style>
 	section {
