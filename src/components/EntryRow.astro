@@ -44,7 +44,6 @@ const hasSlottedNote = Astro.slots.has('default');
 			{title}
 			{external && <span class="out" aria-label="opens in a new tab">↗</span>}
 		</a>
-		{date && <FormattedDate date={date} />}
 	</p>
 	{note && <p class="note">{note}</p>}
 	{
@@ -55,11 +54,21 @@ const hasSlottedNote = Astro.slots.has('default');
 		)
 	}
 	</div>
+	{date && <FormattedDate date={date} />}
 </li>
 
 <style>
+	/*
+	 * [thumb] [text] [date] — the date is its own column so it sits at the
+	 * true right edge of the row rather than the right edge of the text.
+	 * `auto` on the last column keeps it as narrow as the date needs.
+	 */
 	.row {
-		padding: 0.6rem 0;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 0 1.25rem;
+		align-items: start;
+		padding: 0.75rem 0;
 		border-bottom: 1px solid var(--border);
 	}
 	/*
@@ -69,27 +78,29 @@ const hasSlottedNote = Astro.slots.has('default');
 	 * a screen reader or keyboard.
 	 */
 	.row--thumb {
-		display: grid;
-		grid-template-columns: 120px 1fr;
-		gap: 1rem;
-		align-items: start;
-		padding: 0.85rem 0;
+		grid-template-columns: 104px 1fr auto;
 	}
 	.thumb {
 		display: block;
-		border-radius: 3px;
+		width: 104px;
+		height: 68px;
+		border-radius: 4px;
 		overflow: hidden;
 		border: 1px solid var(--border-light);
 	}
 	.thumb :global(img) {
 		display: block;
 		width: 100%;
-		height: auto;
+		height: 100%;
+		object-fit: cover;
 	}
 	@media (max-width: 560px) {
 		.row--thumb {
-			grid-template-columns: 76px 1fr;
-			gap: 0.75rem;
+			grid-template-columns: 68px 1fr auto;
+		}
+		.thumb {
+			width: 68px;
+			height: 46px;
 		}
 	}
 	/*
@@ -98,18 +109,15 @@ const hasSlottedNote = Astro.slots.has('default');
 	 */
 	.line {
 		margin: 0;
-		display: flex;
-		gap: 1rem;
-		align-items: baseline;
-		justify-content: space-between;
 	}
 	/* Monospace so dates form a clean right-hand column down the list. */
-	.line time {
+	/* Monospace so the dates form a clean right-hand column down the list. */
+	.row > :global(time) {
 		font-family: var(--font-mono);
 		color: var(--ink-faint);
 		font-size: 0.8rem;
 		white-space: nowrap;
-		flex: none;
+		padding-top: 0.2rem;
 	}
 	/* Two or three lines of preview, then clamp — long descriptions
 	   otherwise make every row a different height. */
