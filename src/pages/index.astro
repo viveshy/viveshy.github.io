@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import TeaserList from '../components/TeaserList.astro';
 import { isPublished } from '../lib/entries';
+import site from '../data/site.yaml';
 import { Content as Bio } from '../content/about.mdx';
 
 const writing = (await getCollection('writing')).filter((e) => isPublished(e));
@@ -24,30 +25,30 @@ const papers = (await getCollection('papers')).filter((e) => isPublished(e));
 	</section>
 
 	<TeaserList
-		heading="Writing"
-		blurb="Recent pieces."
+		heading={site.sections.writing.title}
+		blurb={site.sections.writing.blurb}
 		more="/writing/"
-		moreLabel="All writings"
+		moreLabel={site.sections.writing.more}
 		base="/writing"
 		entries={writing}
 		limit={5}
 	/>
 
 	<TeaserList
-		heading="Notes"
-		blurb="Topics I am working through, edited over time."
+		heading={site.sections.notes.title}
+		blurb={site.sections.notes.blurb}
 		more="/notes/"
-		moreLabel="All notes"
+		moreLabel={site.sections.notes.more}
 		base="/notes"
 		entries={notes}
 		limit={4}
 	/>
 
 	<TeaserList
-		heading="Paper Drops"
-		blurb="What I have been reading."
+		heading={site.sections.papers.title}
+		blurb={site.sections.papers.blurb}
 		more="/papers/"
-		moreLabel="All papers"
+		moreLabel={site.sections.papers.more}
 		base="/papers"
 		entries={papers}
 		limit={4}

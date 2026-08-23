@@ -1,3 +1,21 @@
+# One definition per section, used by both the homepage teaser and the
+# section's own page. They were duplicated before and drifted apart —
+# /notes/ said "Principles I stand for and advocate" while the homepage
+# still said "Topics I am working through".
+sections:
+  writing:
+    title: Writing
+    blurb: On AI and LLMs, engineering, and how software actually gets built.
+    more: All writings
+  notes:
+    title: Notes
+    blurb: Principles I stand for and advocate.
+    more: All notes
+  papers:
+    title: Paper Drops
+    blurb: Papers I have read, most recent first. Each one opens on Drive.
+    more: All papers
+
 nav:
   - { label: Writing, href: /writing/ }
   - { label: Notes, href: /notes/ }
