@@ -77,14 +77,12 @@ const shown = (byNewest(entries, dateField)).slice(0, limit);
 	.head a {
 		margin-left: auto;
 	}
-	/* Uppercase and letterspaced, as the reference does it — a quiet
-	   section marker rather than a heading competing with entry titles. */
+	/* Bold and full-size: these name the sections and should carry weight,
+	   not recede. The right-aligned link stays. */
 	.heading {
-		text-transform: uppercase;
-		letter-spacing: 0.13em;
-		font-size: 0.78rem;
-		font-weight: 600;
-		color: var(--ink-soft);
+		font-weight: 700;
+		font-size: 1.05rem;
+		color: var(--ink-strong);
 	}
 	.head a {
 		font-size: 0.85rem;
