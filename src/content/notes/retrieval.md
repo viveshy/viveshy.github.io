@@ -1,6 +1,6 @@
 ---
-title: Understanding retrieval
-description: What actually matters when a system has to find the right context.
+title: Ranking beats recall
+description: Past a certain context length, where a passage sits matters more than whether it was found.
 pubDate: 2026-08-20
 heroImage: ./retrieval-banner.svg
 ---

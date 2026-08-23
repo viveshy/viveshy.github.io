@@ -1,6 +1,6 @@
 ---
-title: Agents in production
-description: Notes on what breaks once an agent leaves the notebook.
+title: Agents should fail loudly
+description: A silent plausible answer is worse than a stop. What survives a turn is what something deliberately wrote down.
 pubDate: 2026-08-22
 heroImage: ./agents-in-production-banner.svg
 ---

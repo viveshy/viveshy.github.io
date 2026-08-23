@@ -44,14 +44,12 @@ land on a request-access screen.
 **Writing** is dated and stacked newest-first — anything from a couple of
 paragraphs to a long essay.
 
-**Notes** are different on purpose, and the idea is borrowed from
-[leerob.com](https://leerob.com): they are *evergreen topic pages*, not a
-dated stream. One page per subject — "Understanding retrieval", "Agents
-in production" — that you keep editing as you learn more. So they carry
-no `pubDate` at all; a publication date on a living document is
-misleading. They are sequenced with an `order` field (lower first, ties
-broken by title) and can show `updatedDate` if you want to signal
-freshness.
+**Notes** are principles — positions held and argued for, not write-ups.
+Short, assertive, one claim per note. The idea is borrowed from
+[leerob.com](https://leerob.com)'s beliefs page.
+
+Both are dated and sorted newest first. Notes make `description`
+optional, since a principle is often shorter than a summary of it.
 
 There is no RSS feed.
 

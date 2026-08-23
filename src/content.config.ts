@@ -33,9 +33,10 @@ const writing = defineCollection({
 });
 
 /**
- * Notes are shorter and rougher than Writing, but they are dated the same
- * way — one rule across the site rather than a special case. `description`
- * stays optional, since a note is often shorter than a summary of it.
+ * Notes are principles — positions held and argued for, not write-ups.
+ * Shorter and more assertive than Writing, and dated the same way so
+ * there is one rule across the site. `description` stays optional, since
+ * a principle is often shorter than a summary of it would be.
  */
 const notes = defineCollection({
 	loader: glob({ base: './src/content/notes', pattern: '**/*.{md,mdx}' }),
