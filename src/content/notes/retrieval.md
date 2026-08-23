@@ -1,7 +1,8 @@
 ---
 title: Understanding retrieval
 description: What actually matters when a system has to find the right context.
-order: 1
+pubDate: 2026-08-20
+heroImage: ./retrieval-banner.svg
 ---
 
 A running note on retrieval. Edited as I learn more, so treat anything

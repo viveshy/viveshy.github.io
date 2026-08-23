@@ -3,6 +3,7 @@ title: "What Separates a Good Data Product From a Great One"
 description: "Stability, velocity, and maturity usually describe systems and architecture. Here, I am applying them to data. For any company that builds a data-driven product, these three…"
 pubDate: 2025-06-24
 canonicalUrl: https://www.linkedin.com/pulse/why-stability-velocity-maturity-matter-data-driven-companies-yadav-k6qbf
+heroImage: ./images/banner.svg
 ---
 Stability, velocity, and maturity usually describe systems and architecture. Here, I am applying them to data. For any company that builds a data-driven product, these three qualities matter as much for the data itself as they do for the infrastructure that carries it.
 

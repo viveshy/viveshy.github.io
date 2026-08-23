@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import FormattedDate from './FormattedDate.astro';
 
 interface Props {
@@ -9,9 +11,11 @@ interface Props {
 	note?: string;
 	/** Opens in a new tab and shows an outbound marker. */
 	external?: boolean;
+	/** Banner thumbnail. Omitted collections keep the plain text row. */
+	heroImage?: ImageMetadata;
 }
 
-const { href, title, date, note, external = false } = Astro.props;
+const { href, title, date, note, external = false, heroImage } = Astro.props;
 
 // noopener is the security-relevant half: without it the opened page can
 // reach back through window.opener. noreferrer keeps the referrer off.
@@ -24,20 +28,23 @@ const outbound = external
 const hasSlottedNote = Astro.slots.has('default');
 ---
 
-<li class="row">
+<li class:list={['row', { 'row--thumb': heroImage }]}>
+	{
+		heroImage && (
+			<a class="thumb" href={href} {...outbound} tabindex="-1" aria-hidden="true">
+				{/* No densities: the banner is a vector, so a 2x variant is a
+					    byte-identical duplicate. */}
+					<Image src={heroImage} alt="" width={240} loading="lazy" />
+			</a>
+		)
+	}
+	<div class="body">
 	<p class="line">
-		{
-			date && (
-				<>
-					<FormattedDate date={date} />
-					<span class="sep">:</span>
-				</>
-			)
-		}
 		<a href={href} {...outbound}>
 			{title}
 			{external && <span class="out" aria-label="opens in a new tab">↗</span>}
 		</a>
+		{date && <FormattedDate date={date} />}
 	</p>
 	{note && <p class="note">{note}</p>}
 	{
@@ -47,6 +54,7 @@ const hasSlottedNote = Astro.slots.has('default');
 			</div>
 		)
 	}
+	</div>
 </li>
 
 <style>
@@ -54,24 +62,66 @@ const hasSlottedNote = Astro.slots.has('default');
 		padding: 0.6rem 0;
 		border-bottom: 1px solid var(--border);
 	}
+	/*
+	 * Rows with a banner become a two-column grid. The thumbnail is
+	 * aria-hidden and tabindex=-1 — it duplicates the title link, so
+	 * exposing it twice would just make the list slower to navigate with
+	 * a screen reader or keyboard.
+	 */
+	.row--thumb {
+		display: grid;
+		grid-template-columns: 120px 1fr;
+		gap: 1rem;
+		align-items: start;
+		padding: 0.85rem 0;
+	}
+	.thumb {
+		display: block;
+		border-radius: 3px;
+		overflow: hidden;
+		border: 1px solid var(--border-light);
+	}
+	.thumb :global(img) {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	@media (max-width: 560px) {
+		.row--thumb {
+			grid-template-columns: 76px 1fr;
+			gap: 0.75rem;
+		}
+	}
+	/*
+	 * Title left, date right. `baseline` rather than `center` so the date
+	 * sits on the title's baseline even when the title wraps to two lines.
+	 */
 	.line {
 		margin: 0;
 		display: flex;
-		gap: 0.5em;
-		flex-wrap: wrap;
+		gap: 1rem;
+		align-items: baseline;
+		justify-content: space-between;
 	}
-	/* Monospace dates so they form a clean column down the list. */
-	.line time,
-	.sep {
+	/* Monospace so dates form a clean right-hand column down the list. */
+	.line time {
 		font-family: var(--font-mono);
-		color: var(--ink-soft);
-		font-size: 0.85rem;
+		color: var(--ink-faint);
+		font-size: 0.8rem;
 		white-space: nowrap;
+		flex: none;
 	}
+	/* Two or three lines of preview, then clamp — long descriptions
+	   otherwise make every row a different height. */
 	.note {
-		margin: 0.25rem 0 0;
+		margin: 0.3rem 0 0;
 		color: var(--ink-soft);
 		font-size: 0.9rem;
+		line-height: 1.5;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 	.note :global(p) {
 		margin: 0.25rem 0;

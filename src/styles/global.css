@@ -21,6 +21,7 @@
 	--ink: #171b20;
 	--ink-strong: #000000;
 	--ink-soft: #586470;
+	--ink-faint: #65707c;
 	--heading: #0e1216;
 	--border: #ccd6de;
 	--border-light: #e4ebf0;
@@ -38,6 +39,7 @@
 	--ink: #e4eaf0;
 	--ink-strong: #ffffff;
 	--ink-soft: #93a1af;
+	--ink-faint: #8997a5;
 	--heading: #ffffff;
 	--border: #303945;
 	--border-light: #3e4855;
@@ -52,6 +54,8 @@
 		--ink: #e4eaf0;
 		--ink-strong: #ffffff;
 		--ink-soft: #93a1af;
+		--ink-faint: #8997a5;
+	--ink-faint: #8997a5;
 		--heading: #ffffff;
 		--border: #303945;
 		--border-light: #3e4855;

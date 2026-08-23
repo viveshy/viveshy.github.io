@@ -49,7 +49,6 @@ const papers = (await getCollection('papers')).filter((e) => isPublished(e));
 		base="/notes"
 		entries={notes}
 		limit={4}
-		dated={false}
 	/>
 
 	<TeaserList

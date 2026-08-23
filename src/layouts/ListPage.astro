@@ -3,7 +3,7 @@ import { render } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import EntryRow from '../components/EntryRow.astro';
 import { cleanSlug } from '../lib/slug';
-import { byNewest, byOrder } from '../lib/entries';
+import { byNewest } from '../lib/entries';
 
 interface Props {
 	title: string;
@@ -13,11 +13,6 @@ interface Props {
 	entries: any[];
 	/** Render each entry's full note inline (papers, books). */
 	showNotes?: boolean;
-	/**
-	 * Notes have no pubDate — they are arranged by `order` and show no
-	 * date, since an evergreen page has no single publication moment.
-	 */
-	dated?: boolean;
 	/**
 	 * Rows link somewhere else entirely — read this frontmatter field for
 	 * the href and open it in a new tab. Paper Drops point at Drive.
@@ -39,12 +34,11 @@ const {
 	base,
 	entries,
 	showNotes = false,
-	dated = true,
 	linkField,
 	dateField = 'pubDate',
 	showDate = true,
 } = Astro.props;
-const sorted = dated ? byNewest(entries, dateField) : byOrder(entries);
+const sorted = byNewest(entries, dateField);
 
 // Note-carrying collections render their body in full on the list page,
 // so the section is readable without clicking through.
@@ -72,7 +66,8 @@ const rows = await Promise.all(
 					href={linkField ? entry.data[linkField] : `${base}/${cleanSlug(entry.id)}/`}
 					external={Boolean(linkField)}
 					title={entry.data.title}
-					date={dated && showDate ? entry.data[dateField] : undefined}
+					heroImage={entry.data.heroImage}
+					date={showDate ? entry.data[dateField] : undefined}
 					note={showNotes ? undefined : entry.data.description}
 				>
 					{Note && <Note />}

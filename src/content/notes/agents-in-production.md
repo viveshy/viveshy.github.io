@@ -1,7 +1,8 @@
 ---
 title: Agents in production
 description: Notes on what breaks once an agent leaves the notebook.
-order: 2
+pubDate: 2026-08-22
+heroImage: ./agents-in-production-banner.svg
 ---
 
 Things I keep relearning about running agents against real systems.

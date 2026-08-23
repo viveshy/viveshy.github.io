@@ -50,11 +50,9 @@ const {
 			}
 		</header>
 
-		{
-			heroImage && (
-				<Image class="hero" src={heroImage} alt={title} widths={[640, 960]} loading="eager" />
-			)
-		}
+		{/* No widths: the banners are vectors, so responsive variants would
+		    be byte-identical duplicates. */}
+		{heroImage && <Image class="hero" src={heroImage} alt={title} loading="eager" />}
 
 		<slot name="meta" />
 		<div class="prose">

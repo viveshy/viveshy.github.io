@@ -33,21 +33,15 @@ const writing = defineCollection({
 });
 
 /**
- * Notes are evergreen topic pages, not a dated stream — the idea taken
- * from leerob.com. "Things I believe", "Understanding retrieval": living
- * documents you keep editing, so a publication date would be misleading.
- * They carry no `pubDate` at all and are sequenced by `order`.
+ * Notes are shorter and rougher than Writing, but they are dated the same
+ * way — one rule across the site rather than a special case. `description`
+ * stays optional, since a note is often shorter than a summary of it.
  */
 const notes = defineCollection({
 	loader: glob({ base: './src/content/notes', pattern: '**/*.{md,mdx}' }),
 	schema: ({ image }) =>
 		z.object({
-			title: z.string(),
-			description: z.string().optional(),
-			/** Lower sorts first. Ties fall back to title. */
-			order: z.number().default(0),
-			updatedDate: z.coerce.date().optional(),
-			draft: z.boolean().default(false),
+			...base,
 			heroImage: image().optional(),
 		}),
 });

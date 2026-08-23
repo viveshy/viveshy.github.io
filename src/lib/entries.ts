@@ -16,18 +16,6 @@ export function byNewest<T extends Dated>(entries: T[], field = 'pubDate'): T[] 
 }
 
 /**
- * Manual sequence, for collections with no meaningful date — Notes are
- * evergreen topic pages, so they are arranged rather than stacked
- * newest-first. Ties fall back to title so ordering stays stable.
- */
-export function byOrder<T extends Ordered>(entries: T[]): T[] {
-	return [...entries].sort(
-		(a, b) =>
-			a.data.order - b.data.order || a.data.title.localeCompare(b.data.title),
-	);
-}
-
-/**
  * Drafts are hidden in production builds but visible in `astro dev`,
  * so work in progress can live in the repo without shipping.
  *

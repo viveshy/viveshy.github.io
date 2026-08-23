@@ -1,11 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <title>Vivesh Yadav</title>
   <!--
-    The V is a filled path rather than a glyph. A glyph favicon renders in
-    whatever font the OS resolves for system-ui, so it looked different on
-    every platform; a path is identical everywhere and stays crisp at 16px.
-    Flat-cut terminals to match Space Grotesk.
+    Lowercase vy as stroked polylines, not glyphs — a font-based favicon
+    resolves to a different typeface on every OS. Sized to an x-height
+    with the y descending below the baseline, so the pair reads as
+    lowercase rather than small capitals.
   -->
   <rect width="64" height="64" rx="13" fill="#2f5c8f"/>
-  <path d="M15 16 h10 l7 20 l7 -20 h10 l-13 32 h-8 z" fill="#f4f7f9"/>
+  <g fill="none" stroke="#f4f7f9" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter">
+    <path d="M12 23 L20.5 42 L29 23"/>
+    <path d="M35 23 L43 41"/>
+    <path d="M52 23 L38 53"/>
+  </g>
 </svg>

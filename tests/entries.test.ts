@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { byNewest, byOrder, isPublished } from '../src/lib/entries';
+import { byNewest, isPublished } from '../src/lib/entries';
 
 const entry = (id: string, iso: string, draft = false) => ({
 	id,
@@ -32,36 +32,6 @@ describe('byNewest with a custom date field', () => {
 			'readDate',
 		);
 		expect(sorted.map((e) => e.id)).toEqual(['new', 'mid', 'old']);
-	});
-});
-
-describe('byOrder', () => {
-	const n = (id: string, order: number, title = id) => ({
-		id,
-		data: { order, title },
-	});
-
-	it('sorts ascending by order', () => {
-		expect(byOrder([n('c', 3), n('a', 1), n('b', 2)]).map((e) => e.id)).toEqual([
-			'a',
-			'b',
-			'c',
-		]);
-	});
-
-	it('falls back to title when order ties', () => {
-		const sorted = byOrder([
-			n('x', 0, 'Zebra'),
-			n('y', 0, 'Alpha'),
-			n('z', 0, 'Mango'),
-		]);
-		expect(sorted.map((e) => e.data.title)).toEqual(['Alpha', 'Mango', 'Zebra']);
-	});
-
-	it('does not mutate the input array', () => {
-		const input = [n('b', 2), n('a', 1)];
-		byOrder(input);
-		expect(input.map((e) => e.id)).toEqual(['b', 'a']);
 	});
 });
 

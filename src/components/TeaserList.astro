@@ -1,6 +1,6 @@
 ---
 import EntryRow from './EntryRow.astro';
-import { byNewest, byOrder } from '../lib/entries';
+import { byNewest } from '../lib/entries';
 import { cleanSlug } from '../lib/slug';
 
 interface Props {
@@ -34,12 +34,11 @@ const {
 	base,
 	entries,
 	limit = 5,
-	dated = true,
 	linkField,
 	dateField = 'pubDate',
 	showDate = true,
 } = Astro.props;
-const shown = (dated ? byNewest(entries, dateField) : byOrder(entries)).slice(0, limit);
+const shown = (byNewest(entries, dateField)).slice(0, limit);
 ---
 
 <section>
@@ -57,7 +56,8 @@ const shown = (dated ? byNewest(entries, dateField) : byOrder(entries)).slice(0,
 					href={linkField ? entry.data[linkField] : `${base}/${cleanSlug(entry.id)}/`}
 					external={Boolean(linkField)}
 					title={entry.data.title}
-					date={dated && showDate ? entry.data[dateField] : undefined}
+					heroImage={entry.data.heroImage}
+					date={showDate ? entry.data[dateField] : undefined}
 				/>
 			))
 		}
@@ -68,12 +68,17 @@ const shown = (dated ? byNewest(entries, dateField) : byOrder(entries)).slice(0,
 	section {
 		margin-top: 2.5rem;
 	}
+	/* Heading left, "All X ➔" pushed to the right edge, so the link lines
+	   up with the dates in the rows below it. */
 	.head {
 		display: flex;
 		align-items: baseline;
 		gap: 0.5rem;
 		flex-wrap: wrap;
 		margin: 0;
+	}
+	.head a {
+		margin-left: auto;
 	}
 	.heading {
 		font-weight: 700;
