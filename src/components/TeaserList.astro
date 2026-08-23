@@ -41,13 +41,13 @@ const {
 const shown = byNewest(entries, dateField).slice(0, limit);
 ---
 
-{shown.length > 0 && (
 <section>
 	<p class="head">
 		<span class="heading">{heading}</span>
 		<a href={more}>{moreLabel} →</a>
 	</p>
 	<p class="blurb">{blurb}</p>
+	{shown.length === 0 && <p class="empty">Nothing here yet.</p>}
 	<ul>
 		{
 			shown.map((entry) => (
@@ -61,7 +61,6 @@ const shown = byNewest(entries, dateField).slice(0, limit);
 		}
 	</ul>
 </section>
-)}
 
 <style>
 	section {
@@ -89,6 +88,11 @@ const shown = byNewest(entries, dateField).slice(0, limit);
 	.head a {
 		font-size: 0.85rem;
 	}
+	.empty {
+		color: var(--ink-faint);
+		font-size: 0.9rem;
+		margin: 0.75rem 0 0;
+	}
 	.blurb {
 		color: var(--ink-soft);
 		font-size: 0.9rem;
@@ -98,6 +102,8 @@ const shown = byNewest(entries, dateField).slice(0, limit);
 		list-style: none;
 		padding: 0;
 		margin: 0;
+	}
+	ul:not(:empty) {
 		border-top: 1px solid var(--border-light);
 	}
 </style>
