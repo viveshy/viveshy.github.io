@@ -42,11 +42,9 @@ const shown = (byNewest(entries, dateField)).slice(0, limit);
 ---
 
 <section>
-	{/* "Recent blog posts • Full archive ➔" — his header format. */}
 	<p class="head">
 		<span class="heading">{heading}</span>
-		<span class="dot">•</span>
-		<a href={more}>{moreLabel} ➔</a>
+		<a href={more}>{moreLabel} →</a>
 	</p>
 	<p class="blurb">{blurb}</p>
 	<ul>
@@ -56,7 +54,6 @@ const shown = (byNewest(entries, dateField)).slice(0, limit);
 					href={linkField ? entry.data[linkField] : `${base}/${cleanSlug(entry.id)}/`}
 					external={Boolean(linkField)}
 					title={entry.data.title}
-					heroImage={entry.data.heroImage}
 					date={showDate ? entry.data[dateField] : undefined}
 				/>
 			))
@@ -80,17 +77,17 @@ const shown = (byNewest(entries, dateField)).slice(0, limit);
 	.head a {
 		margin-left: auto;
 	}
+	/* Uppercase and letterspaced, as the reference does it — a quiet
+	   section marker rather than a heading competing with entry titles. */
 	.heading {
-		font-weight: 700;
-		color: var(--ink-strong);
-		font-size: 1.05rem;
-	}
-	.dot,
-	.head a {
-		font-size: 0.9rem;
-	}
-	.dot {
+		text-transform: uppercase;
+		letter-spacing: 0.13em;
+		font-size: 0.78rem;
+		font-weight: 600;
 		color: var(--ink-soft);
+	}
+	.head a {
+		font-size: 0.85rem;
 	}
 	.blurb {
 		color: var(--ink-soft);

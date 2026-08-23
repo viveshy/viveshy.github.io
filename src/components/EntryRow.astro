@@ -17,6 +17,12 @@ interface Props {
 
 const { href, title, date, note, external = false, heroImage } = Astro.props;
 
+// Where the date sits depends on whether the row carries a preview. With
+// one, a right-hand date floats level with the title and detached from
+// everything; below the text it reads as part of the entry. Without one,
+// the row is a single line and the far right is the natural place.
+const hasNote = Boolean(note) || Astro.slots.has('default');
+
 // noopener is the security-relevant half: without it the opened page can
 // reach back through window.opener. noreferrer keeps the referrer off.
 const outbound = external
@@ -25,7 +31,11 @@ const outbound = external
 
 // Note-carrying collections pass their rendered body through the slot
 // instead of the `note` string.
-const hasSlottedNote = Astro.slots.has('default');
+// Astro.slots.has() is true even when the slot resolves to nothing —
+// ListPage always passes children, and passes null when showNotes is off.
+// Rendering it and checking the result is the only reliable test.
+const slotted = Astro.slots.has('default') ? await Astro.slots.render('default') : '';
+const hasSlottedNote = slotted.trim().length > 0;
 ---
 
 <li class:list={['row', { 'row--thumb': heroImage }]}>
@@ -48,13 +58,12 @@ const hasSlottedNote = Astro.slots.has('default');
 	{note && <p class="note">{note}</p>}
 	{
 		hasSlottedNote && (
-			<div class="note">
-				<slot />
-			</div>
+			<div class="note" set:html={slotted} />
 		)
 	}
+	{date && hasNote && <FormattedDate date={date} />}
 	</div>
-	{date && <FormattedDate date={date} />}
+	{date && !hasNote && <FormattedDate date={date} />}
 </li>
 
 <style>
@@ -111,13 +120,21 @@ const hasSlottedNote = Astro.slots.has('default');
 		margin: 0;
 	}
 	/* Monospace so dates form a clean right-hand column down the list. */
-	/* Monospace so the dates form a clean right-hand column down the list. */
-	.row > :global(time) {
+	/* Monospace either way, so dates stay a consistent voice. */
+	:global(time) {
 		font-family: var(--font-mono);
 		color: var(--ink-faint);
 		font-size: 0.8rem;
 		white-space: nowrap;
-		padding-top: 0.2rem;
+	}
+	/* Far right, level with the title's first line. */
+	.row > :global(time) {
+		padding-top: 0.15rem;
+	}
+	/* Below the preview, in the text column. */
+	.body > :global(time) {
+		display: block;
+		margin-top: 0.5rem;
 	}
 	/* Two or three lines of preview, then clamp — long descriptions
 	   otherwise make every row a different height. */

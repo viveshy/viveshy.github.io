@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 import yaml from '@rollup/plugin-yaml';
 import { defineConfig, fontProviders } from 'astro/config';
+import rehypeExternalLinks from 'rehype-external-links';
 
 export default defineConfig({
 	site: 'https://viveshy.com',
@@ -16,6 +17,15 @@ export default defineConfig({
 	},
 
 	markdown: {
+		// Every off-site link in prose opens in a new tab. rel includes
+		// noopener because without it the opened page can reach back through
+		// window.opener; noreferrer keeps the referrer off.
+		rehypePlugins: [
+			[
+				rehypeExternalLinks,
+				{ target: '_blank', rel: ['noopener', 'noreferrer'] },
+			],
+		],
 		shikiConfig: {
 			// Emit CSS variables for both themes so one build serves light + dark.
 			themes: { light: 'github-light', dark: 'github-dark' },
