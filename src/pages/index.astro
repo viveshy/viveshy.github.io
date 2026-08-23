@@ -15,8 +15,6 @@ const papers = (await getCollection('papers')).filter((e) => isPublished(e));
 <BaseLayout wide>
 	<section class="hero prose">
 		<h1>Hey, I am Vivesh</h1>
-		<p class="tagline">AI, LLMs, databases, and systems that scale.</p>
-
 		{/* Imported from about.mdx rather than repeated, so the homepage
 		    and /about cannot drift apart. */}
 		<Bio />
@@ -62,10 +60,5 @@ const papers = (await getCollection('papers')).filter((e) => isPublished(e));
 	.hero h1 {
 		margin-top: 0;
 		font-weight: 700;
-	}
-	.tagline {
-		color: var(--ink-soft);
-		font-size: 1.15rem;
-		margin-top: -0.5rem;
 	}
 </style>
