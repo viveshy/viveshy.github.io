@@ -44,7 +44,16 @@ const ogImage = new URL('/og-default.png', Astro.site);
 	})();
 </script>
 
+{/*
+	favicon.ico first: it is the path Google's crawler reaches for, and a
+	404 there is why search showed a globe. The SVG stays for browsers that
+	prefer it (crisp at any size); the 96px PNG is a raster fallback at a
+	multiple of 48, which is what Google asks for.
+*/}
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <meta name="generator" content={Astro.generator} />
 
