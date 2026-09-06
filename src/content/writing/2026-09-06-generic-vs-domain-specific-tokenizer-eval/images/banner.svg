@@ -1,28 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-labelledby="t">
-  <title id="t">A medical word broken into five tokens by a general purpose tokenizer, one of which is the ordinary English word one</title>
+  <title id="t">A 16,000 token medical tokenizer needs fewer tokens per word of medical text than GPT-4's 100,277 token tokenizer</title>
   <!--
-    Built to read at both sizes. The list thumbnail is 104x68 with
-    object-fit: cover, so only x 85-635 survives and it scales down about
-    7x. The motif is large filled shapes inside that band; the small text
-    is a bonus at full width, never the point. Every fill clears 3:1 on
-    this background and carries text at 4.5:1 or better.
+    Bar length is vocabulary size; the number beside it is fertility on medical
+    text. The point is the mismatch, since the shortest bar carries the better
+    number. Sized for the 104x68 list thumbnail, which keeps only x 85-635 and
+    scales down about 7x, so the bars carry it and the text is a bonus.
   -->
   <rect width="720" height="360" fill="#eef2f6"/>
   <g font-family="ui-sans-serif, system-ui, sans-serif">
-    <rect x="150" y="72" width="420" height="60" rx="6" fill="#2f5c8f"/>
-    <text x="360" y="111" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="30" fill="#eef2f6" text-anchor="middle">glomerulonephritis</text>
-    <path d="M360 142 L360 182" stroke="#7d8a99" stroke-width="8" stroke-linecap="round"/>
-    <path d="M338 166 L360 188 L382 166" fill="none" stroke="#7d8a99" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="120" y="204" width="128" height="62" rx="6" fill="#c3d6ea"/>
-    <text x="184" y="244" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" fill="#26364a" text-anchor="middle">glomer</text>
-    <rect x="262" y="204" width="62" height="62" rx="6" fill="#c3d6ea"/>
-    <text x="293" y="244" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" fill="#26364a" text-anchor="middle">ul</text>
-    <rect x="338" y="204" width="78" height="62" rx="6" fill="#b8481a"/>
-    <text x="377" y="244" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" fill="#eef2f6" text-anchor="middle">one</text>
-    <rect x="430" y="204" width="58" height="62" rx="6" fill="#c3d6ea"/>
-    <text x="459" y="244" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" fill="#26364a" text-anchor="middle">ph</text>
-    <rect x="502" y="204" width="98" height="62" rx="6" fill="#c3d6ea"/>
-    <text x="551" y="244" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" fill="#26364a" text-anchor="middle">ritis</text>
-    <text x="360" y="306" font-size="20" fill="#7d8a99" text-anchor="middle">one word, five tokens, and one of them is the English word &#8220;one&#8221;</text>
+    <text x="150" y="72" font-size="18" fill="#7d8a99">vocabulary size</text>
+    <text x="620" y="72" font-size="18" fill="#7d8a99" text-anchor="end">tokens per word</text>
+    <text x="150" y="100" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#26364a">custom-med-bpe</text>
+    <rect x="150" y="110" width="26" height="42" rx="4" fill="#2f5c8f"/>
+    <text x="620" y="141" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="25" fill="#b8481a" text-anchor="end" font-weight="700">1.484</text>
+    <text x="150" y="178" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#26364a">cl100k</text>
+    <rect x="150" y="188" width="160" height="42" rx="4" fill="#c3d6ea"/>
+    <text x="620" y="219" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="25" fill="#7d8a99" text-anchor="end" font-weight="400">1.496</text>
+    <text x="150" y="256" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#26364a">o200k</text>
+    <rect x="150" y="266" width="320" height="42" rx="4" fill="#c3d6ea"/>
+    <text x="620" y="297" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="25" fill="#7d8a99" text-anchor="end" font-weight="400">1.467</text>
+    <rect x="150" y="314" width="470" height="3" fill="#c3d6ea"/>
+    <text x="150" y="348" font-size="19" fill="#26364a">A sixth of the vocabulary, and fewer tokens per word.</text>
   </g>
 </svg>
