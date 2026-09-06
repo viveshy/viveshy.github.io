@@ -1,25 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-labelledby="t">
-  <title id="t">A 16,000 token medical tokenizer needs fewer tokens per word of medical text than GPT-4's 100,277 token tokenizer</title>
+  <title id="t">A generic tokenizer cuts acetylcholinesterase into six tokens; a tokenizer trained on medical text cuts the same word into three</title>
   <!--
-    Bar length is vocabulary size; the number beside it is fertility on medical
-    text. The point is the mismatch, since the shortest bar carries the better
-    number. Sized for the 104x68 list thumbnail, which keeps only x 85-635 and
-    scales down about 7x, so the bars carry it and the text is a bonus.
+    Both rows span the same width because it is the same word. The only
+    difference the eye sees is how many times it was cut, which is the whole
+    argument. Sized for the 104x68 list thumbnail, which keeps only x 85-635
+    and scales down about 7x, so the blocks carry it and the text is a bonus.
   -->
   <rect width="720" height="360" fill="#eef2f6"/>
   <g font-family="ui-sans-serif, system-ui, sans-serif">
-    <text x="150" y="72" font-size="18" fill="#7d8a99">vocabulary size</text>
-    <text x="620" y="72" font-size="18" fill="#7d8a99" text-anchor="end">tokens per word</text>
-    <text x="150" y="100" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#26364a">custom-med-bpe</text>
-    <rect x="150" y="110" width="26" height="42" rx="4" fill="#2f5c8f"/>
-    <text x="620" y="141" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="25" fill="#b8481a" text-anchor="end" font-weight="700">1.484</text>
-    <text x="150" y="178" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#26364a">cl100k</text>
-    <rect x="150" y="188" width="160" height="42" rx="4" fill="#c3d6ea"/>
-    <text x="620" y="219" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="25" fill="#7d8a99" text-anchor="end" font-weight="400">1.496</text>
-    <text x="150" y="256" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#26364a">o200k</text>
-    <rect x="150" y="266" width="320" height="42" rx="4" fill="#c3d6ea"/>
-    <text x="620" y="297" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="25" fill="#7d8a99" text-anchor="end" font-weight="400">1.467</text>
-    <rect x="150" y="314" width="470" height="3" fill="#c3d6ea"/>
-    <text x="150" y="348" font-size="19" fill="#26364a">A sixth of the vocabulary, and fewer tokens per word.</text>
+    <text x="130" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#26364a">acetylcholinesterase</text>
+    <text x="620" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7d8a99">tokens</text>
+    <text x="130" y="82" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7d8a99" letter-spacing="1">GENERIC TOKENIZER</text>
+    <rect x="130.0" y="96" width="43.5" height="54" rx="4" fill="#c3d6ea"/>
+    <text x="151.8" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">ac</text>
+    <rect x="180.5" y="96" width="87.0" height="54" rx="4" fill="#c3d6ea"/>
+    <text x="224.0" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">etyl</text>
+    <rect x="274.5" y="96" width="43.5" height="54" rx="4" fill="#c3d6ea"/>
+    <text x="296.2" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">ch</text>
+    <rect x="325.0" y="96" width="87.0" height="54" rx="4" fill="#c3d6ea"/>
+    <text x="368.5" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">olin</text>
+    <rect x="419.0" y="96" width="108.8" height="54" rx="4" fill="#c3d6ea"/>
+    <text x="473.4" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">ester</text>
+    <rect x="534.8" y="96" width="65.2" height="54" rx="4" fill="#c3d6ea"/>
+    <text x="567.4" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">ase</text>
+    <text x="620" y="132" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="30" fill="#7d8a99" font-weight="400">6</text>
+    <text x="130" y="204" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7d8a99" letter-spacing="1">DOMAIN TOKENIZER</text>
+    <rect x="130.0" y="218" width="136.8" height="54" rx="4" fill="#2f5c8f"/>
+    <text x="198.4" y="253" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#eef2f6" text-anchor="middle">acetyl</text>
+    <rect x="273.8" y="218" width="91.2" height="54" rx="4" fill="#2f5c8f"/>
+    <text x="319.4" y="253" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#eef2f6" text-anchor="middle">chol</text>
+    <rect x="372.0" y="218" width="228.0" height="54" rx="4" fill="#2f5c8f"/>
+    <text x="486.0" y="253" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#eef2f6" text-anchor="middle">inesterase</text>
+    <text x="620" y="254" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="30" fill="#b8481a" font-weight="700">3</text>
+    <text x="130" y="322" font-size="19" fill="#26364a">Same word. Same 16,000 tokens. Different corpus.</text>
   </g>
 </svg>
