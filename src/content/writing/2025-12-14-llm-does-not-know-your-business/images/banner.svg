@@ -1,34 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-labelledby="t">
-  <title id="t">What the model learned in training sits inside its parameters; a company's internal data sits outside, unreachable</title>
+  <title id="t">What the model knows sits inside a circle; the company's own data sits outside it, separated by a gap</title>
   <!--
-    Drawn for this piece. The banner shows the PROBLEM, not the fix — the
-    article's RAG diagram covers the fix further down. What the model knows
-    is bounded by the circle; the company's own data sits outside it, and
-    the gap between the two is the whole point of the piece.
+    Built to read at both sizes. The list thumbnail is 104x68 with
+    object-fit: cover, so only x 85-635 survives and it scales down about
+    7x. The motif is large filled shapes inside that band; the small text
+    is a bonus at full width, never the point. Every fill clears 3:1 on
+    this background and carries text at 4.5:1 or better.
   -->
   <rect width="720" height="360" fill="#eef2f6"/>
   <g font-family="ui-sans-serif, system-ui, sans-serif">
-    <!-- What the model knows: bounded, and it ends where training ended. -->
-    <circle cx="228" cy="180" r="112" fill="none" stroke="#2f5c8f" stroke-width="2.5"/>
-    <text x="228" y="168" font-size="21" fill="#26364a" text-anchor="middle" font-weight="600">Parametric</text>
-    <text x="228" y="196" font-size="21" fill="#26364a" text-anchor="middle" font-weight="600">memory</text>
-    <text x="228" y="226" font-size="14" fill="#7d8a99" text-anchor="middle">frozen at training</text>
-
-    <!-- The gap. Labelled, because it is the subject. -->
-    <path d="M348 180 h84" stroke="#b4bfcb" stroke-width="2.5" stroke-dasharray="7 7"/>
-    <text x="390" y="164" font-size="14" fill="#8a97a5" text-anchor="middle">no access</text>
-
-    <!-- The company's own data: present, and outside the boundary. -->
-    <g stroke="#69788a" stroke-width="2.5" fill="none">
-      <rect x="452" y="84" width="188" height="46" rx="4"/>
-      <rect x="452" y="146" width="188" height="46" rx="4"/>
-      <rect x="452" y="208" width="188" height="46" rx="4"/>
-    </g>
-    <g font-size="15" fill="#4a5563">
-      <text x="472" y="113">Cost reports</text>
-      <text x="472" y="175">VPC and ETL logs</text>
-      <text x="472" y="237">Internal notes</text>
-    </g>
-    <text x="546" y="288" font-size="14" fill="#7d8a99" text-anchor="middle">non-parametric — outside the model</text>
+    <circle cx="272" cy="180" r="104" fill="#2f5c8f"/>
+    <text x="272" y="172" font-size="26" fill="#eef2f6" text-anchor="middle">what the</text>
+    <text x="272" y="204" font-size="26" fill="#eef2f6" text-anchor="middle">model knows</text>
+    <rect x="452" y="104" width="168" height="152" rx="8" fill="#b8481a"/>
+    <text x="536" y="172" font-size="26" fill="#eef2f6" text-anchor="middle">your</text>
+    <text x="536" y="204" font-size="26" fill="#eef2f6" text-anchor="middle">data</text>
+    <rect x="392" y="174" width="9" height="12" rx="2" fill="#7d8a99"/>
+    <rect x="408" y="174" width="9" height="12" rx="2" fill="#7d8a99"/>
+    <rect x="424" y="174" width="9" height="12" rx="2" fill="#7d8a99"/>
+    <rect x="440" y="174" width="9" height="12" rx="2" fill="#7d8a99"/>
+    <text x="360" y="322" font-size="20" fill="#7d8a99" text-anchor="middle">the gap is the whole problem</text>
   </g>
 </svg>
