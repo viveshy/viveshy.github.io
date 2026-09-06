@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 796" width="740" height="796" role="img" aria-labelledby="tt td">
+  <title id="tt">From input text to the vectors an LLM reads</title>
+  <desc id="td">Five stages. The input sentence goes into the tokenizer. The tokenizer splits it into nine tokens. Each token gets a token id. Each id selects one row of the embedding layer. The LLM takes all nine vectors together, compares every token with every other one, and predicts the next token.</desc>
+  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="8" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="var(--ink-soft, #586470)"/></marker></defs>
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+  <rect x="1" y="1" width="738" height="794" rx="8" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.5"/>
+  <text x="20" y="42" fill="var(--ink-soft, #586470)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="1">1 · INPUT TEXT</text>
+  <rect x="20" y="58" width="700" height="38" rx="4" fill="none" stroke="var(--border, #ccd6de)" stroke-width="1.5"/>
+  <text x="370.0" y="82" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" text-anchor="middle">The capital of Nepal is Kathmandu.</text>
+  <path d="M370.0 96 L370.0 122" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="270.0" y="122" width="200" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="370.0" y="148" fill="currentColor" font-size="15" text-anchor="middle" font-weight="600">TOKENIZER</text>
+  <path d="M370.0 162 L370.0 190" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="382.0" y="180.0" fill="var(--ink-soft, #586470)" font-size="12">splits the text</text>
+  <text x="20" y="190" fill="var(--ink-soft, #586470)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="1">2 · TOKENS</text>
+  <rect x="83.0" y="206" width="53.0" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="109.5" y="225" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" text-anchor="middle">&quot;The&quot;</text>
+  <path d="M109.5 234 L109.5 256" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.2" marker-end="url(#a)"/>
+  <rect x="142.0" y="206" width="88.0" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="186.0" y="225" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" text-anchor="middle">&quot; capital&quot;</text>
+  <path d="M186.0 234 L186.0 256" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.2" marker-end="url(#a)"/>
+  <rect x="236.0" y="206" width="53.0" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="262.5" y="225" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" text-anchor="middle">&quot; of&quot;</text>
+  <path d="M262.5 234 L262.5 256" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.2" marker-end="url(#a)"/>
+  <rect x="295.0" y="206" width="74.0" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="332.0" y="225" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" text-anchor="middle">&quot; Nepal&quot;</text>
+  <path d="M332.0 234 L332.0 256" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.2" marker-end="url(#a)"/>
+  <rect x="375.0" y="206" width="53.0" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="401.5" y="225" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" text-anchor="middle">&quot; is&quot;</text>
+  <path d="M401.5 234 L401.5 256" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.2" marker-end="url(#a)"/>
+  <rect x="434.0" y="206" width="67.0" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="467.5" y="225" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" text-anchor="middle">&quot; Kath&quot;</text>
+  <path d="M467.5 234 L467.5 256" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.2" marker-end="url(#a)"/>
+  <rect x="507.0" y="206" width="60.0" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="537.0" y="225" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" text-anchor="middle">&quot;mand&quot;</text>
+  <path d="M537.0 234 L537.0 256" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.2" marker-end="url(#a)"/>
+  <rect x="573.0" y="206" width="39.0" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="592.5" y="225" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" text-anchor="middle">&quot;u&quot;</text>
+  <path d="M592.5 234 L592.5 256" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.2" marker-end="url(#a)"/>
+  <rect x="618.0" y="206" width="39.0" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="637.5" y="225" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" text-anchor="middle">&quot;.&quot;</text>
+  <path d="M637.5 234 L637.5 256" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.2" marker-end="url(#a)"/>
+  <text x="20" y="258" fill="var(--ink-soft, #586470)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="1">3 · TOKEN ID</text>
+  <text x="109.5" y="284" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" text-anchor="middle" font-weight="600">791</text>
+  <text x="186.0" y="284" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" text-anchor="middle" font-weight="600">6864</text>
+  <text x="262.5" y="284" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" text-anchor="middle" font-weight="600">315</text>
+  <text x="332.0" y="284" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" text-anchor="middle" font-weight="600">50064</text>
+  <text x="401.5" y="284" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" text-anchor="middle" font-weight="600">374</text>
+  <text x="467.5" y="284" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" text-anchor="middle" font-weight="600">33995</text>
+  <text x="537.0" y="284" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" text-anchor="middle" font-weight="600">1969</text>
+  <text x="592.5" y="284" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" text-anchor="middle" font-weight="600">84</text>
+  <text x="637.5" y="284" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" text-anchor="middle" font-weight="600">13</text>
+  <path d="M370.0 294 L370.0 322" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="382.0" y="312.0" fill="var(--ink-soft, #586470)" font-size="12">each id selects one row</text>
+  <text x="20" y="322" fill="var(--ink-soft, #586470)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="1">4 · EMBEDDING LAYER</text>
+  <rect x="20" y="338" width="700" height="234" rx="4" fill="none" stroke="var(--border, #ccd6de)" stroke-width="1.5"/>
+  <text x="698" y="364" fill="var(--ink-soft, #586470)" font-size="11" text-anchor="end">one row per id</text>
+  <text x="42" y="364" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600">row 791</text>
+  <text x="140" y="364" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">[  0.21  -0.44   0.08  … ]</text>
+  <text x="42" y="388" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600">row 6864</text>
+  <text x="140" y="388" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">[ -0.13   0.62  -0.29  … ]</text>
+  <text x="42" y="412" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600">row 315</text>
+  <text x="140" y="412" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">[  0.07   0.11   0.55  … ]</text>
+  <text x="42" y="436" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600">row 50064</text>
+  <text x="140" y="436" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">[  0.48  -0.02  -0.37  … ]</text>
+  <text x="42" y="460" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600">row 374</text>
+  <text x="140" y="460" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">[  0.66   0.19  -0.05  … ]</text>
+  <text x="42" y="484" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600">row 33995</text>
+  <text x="140" y="484" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">[ -0.31   0.40   0.23  … ]</text>
+  <text x="42" y="508" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600">row 1969</text>
+  <text x="140" y="508" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">[  0.09  -0.58   0.61  … ]</text>
+  <text x="42" y="532" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600">row 84</text>
+  <text x="140" y="532" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">[  0.44   0.33  -0.12  … ]</text>
+  <text x="42" y="556" fill="var(--accent, #2f5c8f)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600">row 13</text>
+  <text x="140" y="556" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">[ -0.07   0.51   0.02  … ]</text>
+  <path d="M370.0 572 L370.0 598" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="20" y="598" fill="var(--ink-soft, #586470)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="1">5 · THE MODEL</text>
+  <rect x="20" y="614" width="700" height="122" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="42" y="638" fill="currentColor" font-size="14" font-weight="600">LLM</text>
+  <text x="90" y="638" fill="var(--ink-soft, #586470)" font-size="12.5">all nine vectors go in together as one sequence</text>
+  <path d="M451.2 678 Q310.6 652.0 170.0 678" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1" opacity="0.6"/>
+  <path d="M451.2 678 Q338.8 652.0 226.2 678" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1" opacity="0.6"/>
+  <path d="M451.2 678 Q366.9 652.0 282.5 678" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1" opacity="0.6"/>
+  <path d="M451.2 678 Q395.0 652.0 338.8 678" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1" opacity="0.6"/>
+  <path d="M451.2 678 Q423.1 652.1 395.0 678" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1" opacity="0.6"/>
+  <path d="M451.2 678 Q479.4 652.1 507.5 678" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1" opacity="0.6"/>
+  <path d="M451.2 678 Q507.5 652.0 563.8 678" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1" opacity="0.6"/>
+  <path d="M451.2 678 Q535.6 652.0 620.0 678" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1" opacity="0.6"/>
+  <circle cx="170.0" cy="678" r="3.5" fill="var(--ink-soft, #586470)"/>
+  <circle cx="226.2" cy="678" r="3.5" fill="var(--ink-soft, #586470)"/>
+  <circle cx="282.5" cy="678" r="3.5" fill="var(--ink-soft, #586470)"/>
+  <circle cx="338.8" cy="678" r="3.5" fill="var(--ink-soft, #586470)"/>
+  <circle cx="395.0" cy="678" r="3.5" fill="var(--ink-soft, #586470)"/>
+  <circle cx="451.2" cy="678" r="4.5" fill="var(--accent, #2f5c8f)"/>
+  <circle cx="507.5" cy="678" r="3.5" fill="var(--ink-soft, #586470)"/>
+  <circle cx="563.8" cy="678" r="3.5" fill="var(--ink-soft, #586470)"/>
+  <circle cx="620.0" cy="678" r="3.5" fill="var(--ink-soft, #586470)"/>
+  <text x="42" y="682" fill="var(--ink-soft, #586470)" font-size="11.5">vectors</text>
+  <text x="42" y="708" fill="currentColor" font-size="12.5">every token is compared with every other one, so nine tokens make 36 pairs</text>
+  <text x="42" y="726" fill="var(--ink-soft, #586470)" font-size="12">double the tokens and the pairs roughly quadruple, which is where the cost comes from</text>
+  <path d="M370.0 736 L370.0 762" fill="none" stroke="var(--ink-soft, #586470)" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="370.0" y="776" fill="currentColor" font-size="13" text-anchor="middle">predicts the next token</text>
+  </g>
+</svg>

@@ -1,0 +1,173 @@
+---
+title: "Generic vs Domain Specific Tokenizer Eval"
+description: "Why a small tokenizer trained on your own domain can cover the same text in fewer tokens than a general purpose one many times its size."
+pubDate: 2026-09-06
+draft: true
+---
+
+import TokenizationDiagram from './images/tokenization.svg';
+import TrainingDiagram from './images/tokenizer-training.svg';
+
+## Overview
+
+LLM does not understand the words as humans do. For LLM, everything is a token,
+which is created by the Tokenizer. The Tokenizer splits input texts into tokens
+and assigns an id to each token, which is called the token id. This process is
+called tokenization. 
+
+These tokens then pass through the embedding layer, where
+the LLM accesses the embedding values of the token id.
+
+A simple flow to understand tokenization is this:
+
+<TokenizationDiagram class="diagram" />
+
+> *FYI: the process explained here is for a trained tokenizer and a trained
+> model, not during training.*
+
+So, every token is represented as an embedding vector and the llm needs to
+process it. More tokens means more computation cost. So we need an efficient
+tokenizer, one that covers the same text in fewer tokens.
+
+
+## Tokenizer Training
+
+A tokenizer is trained before it is used. During training, it learns how to
+create tokens.
+
+We give it two things. First, a corpus, which is just a pile of text, the
+dataset we train the tokenizer on. Second, how many tokens it is allowed to
+keep. That second number is the vocabulary size. 
+
+Training gives us back two
+things too: the list of tokens, and the rules for splitting text into them.
+
+<TrainingDiagram class="diagram" />
+
+The tokenizer picks its tokens by looking at the corpus we gave it. Words that
+show up often become one token. Rare words get split into smaller tokens. So
+the tokens a tokenizer ends up with depend on one thing: the corpus it was
+trained on.
+
+There is a mathematical way to measure the efficiency of a tokenizer. The
+average number of tokens per word is called fertility. The ideal fertility is 1, 
+which is only theoretical.Normally it is around 1.2.
+
+Rule of thumb:
+**Lower the fertility,better the tokenizer**.
+
+## Generic Tokenizer
+
+Claude and GPT use a generic tokenizer. Its corpus was general text from the
+web. That is the right choice for them, because most text people send an LLM is
+general text, and on general text these tokenizers are very good. GPT-4's
+tokenizer has a fertility of 1.173 there, which is close to one token per word.
+
+The trouble starts when your input text is not general text. On medical writing the
+same tokenizer has a fertility of 1.496. Same tokenizer, harder text, more
+tokens. The reason is the corpus. Medical words are rare on the web, so the
+tokenizer has no token for them, and has to build them from smaller tokens it
+already has.
+
+Here is what GPT-4's tokenizer does with two medical words:
+
+| word | tokens | how it is split |
+|---|---|---|
+| `acetylcholinesterase` | 6 | `ac` `etyl` `ch` `olin` `ester` `ase` |
+| `glomerulonephritis` | 5 | `glomer` `ul` `one` `ph` `ritis` |
+
+Six tokens for one word. 
+
+Now look at the second one. That `one` in the middle
+is the English word *one*. It is there because *one* is common on the web, not
+because it means anything in a kidney disease. The tokenizer is not reading
+medicine. It is rebuilding a medical word out of leftovers from everyday
+English.
+
+So what does this lead to? It leads to a large number of tokens, and more
+tokens means more computation cost.
+
+Can a domain specific tokenizer fix this? Let us not assume it. We will train
+two tokenizers, `custom-med-bpe` and `custom-general-bpe`, and find out.
+
+## Training Two Custom Tokenizers to Evaluate
+
+Why two, when we only care about the medical one? Because we are about to say
+that medical training is what makes the medical tokenizer good. To show that,
+we need something identical in every other way to compare against. Same code,
+same vocabulary size, same settings. Only the corpus is different.
+
+So `custom-med-bpe` is trained on PubMed abstracts, and `custom-general-bpe`
+is trained on Wikipedia paragraphs. The second one is
+called the control, which means it exists only to be compared against. If the
+two differ on medical text, the corpus is the only thing that could have caused
+it.
+
+### The configuration
+
+| setting | value |
+|---|---|
+| medical corpus | 200,000 PubMed abstracts |
+| general corpus | 383,894 Wikipedia paragraphs |
+| corpus size | 282 million characters each |
+| held out for testing | 20,000 abstracts and 38,389 paragraphs |
+| vocabulary size | 16,000 |
+| sampling | random, fixed seed |
+
+The two corpora hold the same amount of text on purpose, so neither tokenizer
+gets more to learn from than the other. We then test both of them twice, once
+on held-out abstracts and once on held-out paragraphs. Neither tokenizer had
+seen either set during training.
+
+The code and the full results are here:
+[github.com/viveshy/domain-tokenizer-eval](https://github.com/viveshy/domain-tokenizer-eval).
+
+## Results
+
+After training both tokenizers, we compared them against the two generic
+tokenizers people actually use every day: `cl100k` from GPT-4 and `o200k` from
+GPT-4o. All four were tested on the same held-out abstracts and paragraphs, and here
+are the outcomes.
+
+| tokenizer | vocabulary | fertility on medical text | fertility on general text |
+|---|---|---|---|
+| `custom-med-bpe` | 16,000 | **1.484** | 1.478 |
+| `custom-general-bpe` | 16,000 | 1.831 | 1.197 |
+| `cl100k` (GPT-4) | 100,277 | 1.496 | 1.173 |
+| `o200k` (GPT-4o) | 200,019 | 1.467 | **1.163** |
+
+Remember the rule: lower is better. Read the medical column first, then the
+general one. Our medical tokenizer is second best on medical text and last on
+general text. That flip is the whole story.
+
+## Conclusion
+
+Three things come out of this.
+
+**Domain matters more than size.** Our 16,000-token medical tokenizer has a
+fertility of 1.484 on medical text. GPT-4's has 1.496, with six times the
+vocabulary. Where the tokens came from mattered more than how many there were.
+
+**Size is not the explanation.** Look at the two 16,000-token rows. Same code,
+same size, same settings. One has 1.484 and the other 1.831. Tokenizers of the
+same size cannot differ because of size, so the corpus is the only thing left.
+
+**Specialising costs you elsewhere.** On general text our medical tokenizer is
+the worst of the four, at 1.478. A vocabulary is a fixed budget, and ours spent
+it on medical words. That is not a bug. It is the proof that it specialised.
+
+One honest note. Our tokenizer beats GPT-4's at 16,000 tokens, but it does not
+beat GPT-4o's, which has 1.467. It needs 32,000 tokens to do that.
+
+## When to Use Which
+
+Use a generic tokenizer for general work. That is most work, and generic
+tokenizers are very good at it.
+
+Train your own when your input text has its own vocabulary and you handle a lot
+of it. Medical, legal, chemistry, code. The narrower your text, the more a
+generic tokenizer spends on tokens you never use.
+
+Do not bother for a small amount of text. At 16,000 tokens our medical
+tokenizer saves about 2 tokens on a 200-word abstract, compared to GPT-4's.
+That only becomes real money when you are processing millions of them.
