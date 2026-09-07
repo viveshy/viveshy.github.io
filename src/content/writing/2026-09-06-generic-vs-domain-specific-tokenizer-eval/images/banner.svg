@@ -1,147 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-labelledby="t">
-  <title id="t">A field of blocks, finely fragmented on one side and resolving into fewer, larger blocks on the other</title>
+  <title id="t">A generic tokenizer cuts acetylcholinesterase into six tokens; a tokenizer trained on medical text cuts the same word into three</title>
   <!--
-    A cover, not a diagram. Block width grows from left to right and the fill
-    deepens with it: many small tokens on one side, few large ones on the
-    other. No labels, and it is full bleed, so the 104x68 thumbnail crop lands
-    on texture wherever it falls.
+    Both rows span the same width because it is the same word. The only
+    difference the eye sees is how many times it was cut, which is the whole
+    argument. Sized for the 104x68 list thumbnail, which keeps only x 85-635
+    and scales down about 7x, so the blocks carry it and the text is a bonus.
   -->
   <rect width="720" height="360" fill="#eef2f6"/>
-  <g>
-    <rect x="-9.7" y="19.5" width="20.0" height="34" rx="3" fill="#c3d6ea"/>
-    <rect x="15.3" y="19.5" width="20.1" height="34" rx="3" fill="#bfd3e7"/>
-    <rect x="40.4" y="19.5" width="20.5" height="34" rx="3" fill="#bacee3"/>
-    <rect x="65.9" y="19.5" width="21.4" height="34" rx="3" fill="#b4c8de"/>
-    <rect x="92.3" y="19.5" width="22.5" height="34" rx="3" fill="#aec3d9"/>
-    <rect x="119.8" y="19.5" width="23.5" height="34" rx="3" fill="#a8bdd4"/>
-    <rect x="148.2" y="19.5" width="26.1" height="34" rx="3" fill="#a1b7cf"/>
-    <rect x="179.3" y="19.5" width="27.1" height="34" rx="3" fill="#9ab0c9"/>
-    <rect x="211.4" y="19.5" width="31.2" height="34" rx="3" fill="#93aac3"/>
-    <rect x="247.6" y="19.5" width="32.9" height="34" rx="3" fill="#8aa2bd"/>
-    <rect x="285.4" y="19.5" width="36.8" height="34" rx="3" fill="#829ab6"/>
-    <rect x="327.2" y="19.5" width="44.5" height="34" rx="3" fill="#7891ae"/>
-    <rect x="376.7" y="19.5" width="56.2" height="34" rx="3" fill="#6d87a5"/>
-    <rect x="437.9" y="19.5" width="56.7" height="34" rx="3" fill="#5f7a9a"/>
-    <rect x="499.6" y="19.5" width="68.5" height="34" rx="3" fill="#516d8e"/>
-    <rect x="573.1" y="19.5" width="92.1" height="34" rx="3" fill="#405e81"/>
-    <rect x="670.3" y="19.5" width="49.7" height="34" rx="3" fill="#29496f"/>
-    <rect x="-17.3" y="60.5" width="20.0" height="34" rx="3" fill="#c3d6ea"/>
-    <rect x="7.7" y="60.5" width="20.0" height="34" rx="3" fill="#c1d4e9"/>
-    <rect x="32.7" y="60.5" width="20.3" height="34" rx="3" fill="#bccfe4"/>
-    <rect x="58.1" y="60.5" width="21.3" height="34" rx="3" fill="#b6cadf"/>
-    <rect x="84.3" y="60.5" width="22.0" height="34" rx="3" fill="#b0c4db"/>
-    <rect x="111.3" y="60.5" width="23.1" height="34" rx="3" fill="#a9bfd6"/>
-    <rect x="139.5" y="60.5" width="24.7" height="34" rx="3" fill="#a3b9d0"/>
-    <rect x="169.2" y="60.5" width="27.1" height="34" rx="3" fill="#9cb3cb"/>
-    <rect x="201.3" y="60.5" width="31.7" height="34" rx="3" fill="#95acc5"/>
-    <rect x="238.0" y="60.5" width="32.5" height="34" rx="3" fill="#8ca4be"/>
-    <rect x="275.5" y="60.5" width="39.0" height="34" rx="3" fill="#849cb7"/>
-    <rect x="319.5" y="60.5" width="45.3" height="34" rx="3" fill="#7a93af"/>
-    <rect x="369.8" y="60.5" width="49.9" height="34" rx="3" fill="#6e88a6"/>
-    <rect x="424.8" y="60.5" width="60.9" height="34" rx="3" fill="#627d9c"/>
-    <rect x="490.7" y="60.5" width="63.9" height="34" rx="3" fill="#536f90"/>
-    <rect x="559.6" y="60.5" width="75.6" height="34" rx="3" fill="#436183"/>
-    <rect x="640.2" y="60.5" width="79.8" height="34" rx="3" fill="#305075"/>
-    <rect x="-20.4" y="101.5" width="20.0" height="34" rx="3" fill="#c3d6ea"/>
-    <rect x="4.6" y="101.5" width="20.0" height="34" rx="3" fill="#c2d5e9"/>
-    <rect x="29.6" y="101.5" width="20.3" height="34" rx="3" fill="#bcd0e5"/>
-    <rect x="54.9" y="101.5" width="21.0" height="34" rx="3" fill="#b6cae0"/>
-    <rect x="80.9" y="101.5" width="21.9" height="34" rx="3" fill="#b0c5db"/>
-    <rect x="107.8" y="101.5" width="23.8" height="34" rx="3" fill="#aabfd6"/>
-    <rect x="136.6" y="101.5" width="25.6" height="34" rx="3" fill="#a4b9d1"/>
-    <rect x="167.2" y="101.5" width="26.8" height="34" rx="3" fill="#9db3cb"/>
-    <rect x="199.0" y="101.5" width="30.6" height="34" rx="3" fill="#95acc6"/>
-    <rect x="234.6" y="101.5" width="33.9" height="34" rx="3" fill="#8da5bf"/>
-    <rect x="273.5" y="101.5" width="40.7" height="34" rx="3" fill="#849db8"/>
-    <rect x="319.2" y="101.5" width="46.0" height="34" rx="3" fill="#7a93af"/>
-    <rect x="370.2" y="101.5" width="49.0" height="34" rx="3" fill="#6e88a6"/>
-    <rect x="424.2" y="101.5" width="67.1" height="34" rx="3" fill="#627d9c"/>
-    <rect x="496.3" y="101.5" width="65.9" height="34" rx="3" fill="#516e8f"/>
-    <rect x="567.2" y="101.5" width="85.7" height="34" rx="3" fill="#415f82"/>
-    <rect x="657.9" y="101.5" width="62.1" height="34" rx="3" fill="#2c4c71"/>
-    <rect x="-4.6" y="142.5" width="20.0" height="34" rx="3" fill="#c3d6ea"/>
-    <rect x="20.4" y="142.5" width="20.1" height="34" rx="3" fill="#bed2e6"/>
-    <rect x="45.6" y="142.5" width="20.8" height="34" rx="3" fill="#b9cce2"/>
-    <rect x="71.4" y="142.5" width="21.8" height="34" rx="3" fill="#b3c7dd"/>
-    <rect x="98.1" y="142.5" width="23.0" height="34" rx="3" fill="#adc1d8"/>
-    <rect x="126.1" y="142.5" width="25.1" height="34" rx="3" fill="#a6bcd3"/>
-    <rect x="156.2" y="142.5" width="26.2" height="34" rx="3" fill="#9fb5cd"/>
-    <rect x="187.4" y="142.5" width="29.9" height="34" rx="3" fill="#98afc8"/>
-    <rect x="222.3" y="142.5" width="33.0" height="34" rx="3" fill="#90a7c1"/>
-    <rect x="260.2" y="142.5" width="37.1" height="34" rx="3" fill="#879fba"/>
-    <rect x="302.4" y="142.5" width="41.5" height="34" rx="3" fill="#7e97b3"/>
-    <rect x="348.9" y="142.5" width="51.7" height="34" rx="3" fill="#738daa"/>
-    <rect x="405.5" y="142.5" width="62.9" height="34" rx="3" fill="#6681a0"/>
-    <rect x="473.5" y="142.5" width="68.4" height="34" rx="3" fill="#567393"/>
-    <rect x="546.9" y="142.5" width="87.1" height="34" rx="3" fill="#466386"/>
-    <rect x="639.1" y="142.5" width="80.9" height="34" rx="3" fill="#315075"/>
-    <rect x="-21.0" y="183.5" width="20.0" height="34" rx="3" fill="#c3d6ea"/>
-    <rect x="4.0" y="183.5" width="20.0" height="34" rx="3" fill="#c2d5e9"/>
-    <rect x="29.0" y="183.5" width="20.4" height="34" rx="3" fill="#bcd0e5"/>
-    <rect x="54.3" y="183.5" width="20.9" height="34" rx="3" fill="#b7cbe0"/>
-    <rect x="80.2" y="183.5" width="21.9" height="34" rx="3" fill="#b1c5db"/>
-    <rect x="107.2" y="183.5" width="23.6" height="34" rx="3" fill="#aac0d6"/>
-    <rect x="135.7" y="183.5" width="24.3" height="34" rx="3" fill="#a4bad1"/>
-    <rect x="165.0" y="183.5" width="27.2" height="34" rx="3" fill="#9db3cc"/>
-    <rect x="197.2" y="183.5" width="28.9" height="34" rx="3" fill="#96adc6"/>
-    <rect x="231.1" y="183.5" width="31.6" height="34" rx="3" fill="#8ea6c0"/>
-    <rect x="267.7" y="183.5" width="34.7" height="34" rx="3" fill="#869eb9"/>
-    <rect x="307.5" y="183.5" width="44.7" height="34" rx="3" fill="#7d96b2"/>
-    <rect x="357.1" y="183.5" width="45.5" height="34" rx="3" fill="#718ba9"/>
-    <rect x="407.7" y="183.5" width="54.0" height="34" rx="3" fill="#66819f"/>
-    <rect x="466.6" y="183.5" width="65.8" height="34" rx="3" fill="#587494"/>
-    <rect x="537.4" y="183.5" width="89.6" height="34" rx="3" fill="#486587"/>
-    <rect x="632.0" y="183.5" width="88.0" height="34" rx="3" fill="#325176"/>
-    <rect x="-13.5" y="224.5" width="20.0" height="34" rx="3" fill="#c3d6ea"/>
-    <rect x="11.5" y="224.5" width="20.1" height="34" rx="3" fill="#c0d4e8"/>
-    <rect x="36.6" y="224.5" width="20.5" height="34" rx="3" fill="#bbcee3"/>
-    <rect x="62.1" y="224.5" width="21.4" height="34" rx="3" fill="#b5c9df"/>
-    <rect x="88.6" y="224.5" width="22.2" height="34" rx="3" fill="#afc3da"/>
-    <rect x="115.8" y="224.5" width="23.8" height="34" rx="3" fill="#a8bed5"/>
-    <rect x="144.5" y="224.5" width="25.5" height="34" rx="3" fill="#a2b8d0"/>
-    <rect x="175.0" y="224.5" width="29.3" height="34" rx="3" fill="#9bb1ca"/>
-    <rect x="209.3" y="224.5" width="33.1" height="34" rx="3" fill="#93aac4"/>
-    <rect x="247.4" y="224.5" width="33.3" height="34" rx="3" fill="#8aa2bd"/>
-    <rect x="285.7" y="224.5" width="37.4" height="34" rx="3" fill="#829ab6"/>
-    <rect x="328.1" y="224.5" width="42.8" height="34" rx="3" fill="#7891ae"/>
-    <rect x="375.9" y="224.5" width="49.2" height="34" rx="3" fill="#6d87a5"/>
-    <rect x="430.1" y="224.5" width="60.9" height="34" rx="3" fill="#607c9b"/>
-    <rect x="496.0" y="224.5" width="74.9" height="34" rx="3" fill="#516e8f"/>
-    <rect x="575.9" y="224.5" width="83.6" height="34" rx="3" fill="#3f5d80"/>
-    <rect x="664.6" y="224.5" width="55.4" height="34" rx="3" fill="#2b4b70"/>
-    <rect x="-12.6" y="265.5" width="20.0" height="34" rx="3" fill="#c3d6ea"/>
-    <rect x="12.4" y="265.5" width="20.1" height="34" rx="3" fill="#c0d3e8"/>
-    <rect x="37.5" y="265.5" width="20.6" height="34" rx="3" fill="#bacee3"/>
-    <rect x="63.1" y="265.5" width="21.4" height="34" rx="3" fill="#b5c9de"/>
-    <rect x="89.5" y="265.5" width="22.5" height="34" rx="3" fill="#aec3da"/>
-    <rect x="116.9" y="265.5" width="24.1" height="34" rx="3" fill="#a8bdd5"/>
-    <rect x="146.0" y="265.5" width="26.3" height="34" rx="3" fill="#a2b7cf"/>
-    <rect x="177.3" y="265.5" width="27.0" height="34" rx="3" fill="#9ab1c9"/>
-    <rect x="209.3" y="265.5" width="32.9" height="34" rx="3" fill="#93aac4"/>
-    <rect x="247.2" y="265.5" width="36.7" height="34" rx="3" fill="#8aa2bd"/>
-    <rect x="288.9" y="265.5" width="42.8" height="34" rx="3" fill="#8199b5"/>
-    <rect x="336.7" y="265.5" width="49.3" height="34" rx="3" fill="#768fac"/>
-    <rect x="391.0" y="265.5" width="53.3" height="34" rx="3" fill="#6984a2"/>
-    <rect x="449.3" y="265.5" width="62.9" height="34" rx="3" fill="#5c7898"/>
-    <rect x="517.2" y="265.5" width="69.2" height="34" rx="3" fill="#4c6a8b"/>
-    <rect x="591.4" y="265.5" width="96.5" height="34" rx="3" fill="#b8481a"/>
-    <rect x="692.9" y="265.5" width="27.1" height="34" rx="3" fill="#24456b"/>
-    <rect x="-2.0" y="306.5" width="20.0" height="34" rx="3" fill="#c3d6ea"/>
-    <rect x="23.0" y="306.5" width="20.2" height="34" rx="3" fill="#bed1e6"/>
-    <rect x="48.2" y="306.5" width="20.8" height="34" rx="3" fill="#b8cce1"/>
-    <rect x="73.9" y="306.5" width="21.4" height="34" rx="3" fill="#b2c6dc"/>
-    <rect x="100.4" y="306.5" width="22.5" height="34" rx="3" fill="#acc1d8"/>
-    <rect x="127.8" y="306.5" width="24.1" height="34" rx="3" fill="#a6bbd3"/>
-    <rect x="156.9" y="306.5" width="25.7" height="34" rx="3" fill="#9fb5cd"/>
-    <rect x="187.6" y="306.5" width="28.8" height="34" rx="3" fill="#98afc8"/>
-    <rect x="221.4" y="306.5" width="30.3" height="34" rx="3" fill="#90a8c1"/>
-    <rect x="256.7" y="306.5" width="38.4" height="34" rx="3" fill="#88a0bb"/>
-    <rect x="300.2" y="306.5" width="42.4" height="34" rx="3" fill="#7e97b3"/>
-    <rect x="347.6" y="306.5" width="44.5" height="34" rx="3" fill="#738daa"/>
-    <rect x="397.1" y="306.5" width="52.5" height="34" rx="3" fill="#6883a1"/>
-    <rect x="454.5" y="306.5" width="62.9" height="34" rx="3" fill="#5b7797"/>
-    <rect x="522.5" y="306.5" width="75.5" height="34" rx="3" fill="#4b688a"/>
-    <rect x="603.0" y="306.5" width="85.3" height="34" rx="3" fill="#39587b"/>
-    <rect x="693.3" y="306.5" width="26.7" height="34" rx="3" fill="#24456b"/>
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <text x="130" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#26364a">acetylcholinesterase</text>
+    <text x="620" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7d8a99">tokens</text>
+    <text x="130" y="82" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7d8a99" letter-spacing="1">GENERIC TOKENIZER</text>
+    <rect x="130.0" y="96" width="43.5" height="54" rx="4" fill="#c3d6ea"/>
+    <text x="151.8" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">ac</text>
+    <rect x="180.5" y="96" width="87.0" height="54" rx="4" fill="#c3d6ea"/>
+    <text x="224.0" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">etyl</text>
+    <rect x="274.5" y="96" width="43.5" height="54" rx="4" fill="#c3d6ea"/>
+    <text x="296.2" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">ch</text>
+    <rect x="325.0" y="96" width="87.0" height="54" rx="4" fill="#c3d6ea"/>
+    <text x="368.5" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">olin</text>
+    <rect x="419.0" y="96" width="108.8" height="54" rx="4" fill="#c3d6ea"/>
+    <text x="473.4" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">ester</text>
+    <rect x="534.8" y="96" width="65.2" height="54" rx="4" fill="#c3d6ea"/>
+    <text x="567.4" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">ase</text>
+    <text x="620" y="132" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="30" fill="#7d8a99" font-weight="400">6</text>
+    <text x="130" y="204" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7d8a99" letter-spacing="1">DOMAIN TOKENIZER</text>
+    <rect x="130.0" y="218" width="136.8" height="54" rx="4" fill="#2f5c8f"/>
+    <text x="198.4" y="253" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#eef2f6" text-anchor="middle">acetyl</text>
+    <rect x="273.8" y="218" width="91.2" height="54" rx="4" fill="#2f5c8f"/>
+    <text x="319.4" y="253" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#eef2f6" text-anchor="middle">chol</text>
+    <rect x="372.0" y="218" width="228.0" height="54" rx="4" fill="#2f5c8f"/>
+    <text x="486.0" y="253" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#eef2f6" text-anchor="middle">inesterase</text>
+    <text x="620" y="254" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="30" fill="#b8481a" font-weight="700">3</text>
+    <text x="130" y="322" font-size="19" fill="#26364a">Same word. Same 16,000 tokens. Different corpus.</text>
   </g>
 </svg>
