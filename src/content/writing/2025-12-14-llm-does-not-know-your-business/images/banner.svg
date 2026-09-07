@@ -1,24 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-labelledby="t">
   <title id="t">What the model knows sits inside a circle; the company's own data sits outside it, separated by a gap</title>
   <!--
-    Built to read at both sizes. The list thumbnail is 104x68 with
-    object-fit: cover, so only x 85-635 survives and it scales down about
-    7x. The motif is large filled shapes inside that band; the small text
-    is a bonus at full width, never the point. Every fill clears 3:1 on
-    this background and carries text at 4.5:1 or better.
+    Treated as a cover: paper ground with a faint dot grid, one serif line,
+    hairline rules. A filled circle against an outlined card, with the gap
+    marked between them, so the two shapes still read at 104x68.
   -->
+  <defs>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="1.4" cy="1.4" r="1.4" fill="#1d2b3a" opacity="0.07"/>
+    </pattern>
+  </defs>
   <rect width="720" height="360" fill="#eef2f6"/>
-  <g font-family="ui-sans-serif, system-ui, sans-serif">
-    <circle cx="272" cy="180" r="104" fill="#2f5c8f"/>
-    <text x="272" y="172" font-size="26" fill="#eef2f6" text-anchor="middle">what the</text>
-    <text x="272" y="204" font-size="26" fill="#eef2f6" text-anchor="middle">model knows</text>
-    <rect x="452" y="104" width="168" height="152" rx="8" fill="#b8481a"/>
-    <text x="536" y="172" font-size="26" fill="#eef2f6" text-anchor="middle">your</text>
-    <text x="536" y="204" font-size="26" fill="#eef2f6" text-anchor="middle">data</text>
-    <rect x="392" y="174" width="9" height="12" rx="2" fill="#7d8a99"/>
-    <rect x="408" y="174" width="9" height="12" rx="2" fill="#7d8a99"/>
-    <rect x="424" y="174" width="9" height="12" rx="2" fill="#7d8a99"/>
-    <rect x="440" y="174" width="9" height="12" rx="2" fill="#7d8a99"/>
-    <text x="360" y="322" font-size="20" fill="#7d8a99" text-anchor="middle">the gap is the whole problem</text>
+  <rect width="720" height="360" fill="url(#dots)"/>
+  <g>
+    <text x="118" y="70" font-family="Georgia, 'Times New Roman', 'Iowan Old Style', serif" font-size="30" fill="#1d2b3a" font-style="italic">outside the parameters</text>
+    <rect x="118" y="86" width="494" height="1" fill="#cfd9e4"/>
+    <circle cx="252" cy="216" r="94" fill="#2f5c8f"/>
+    <text x="252" y="210" font-family="Georgia, 'Times New Roman', 'Iowan Old Style', serif" font-size="21" fill="#ffffff" text-anchor="middle">what the model</text>
+    <text x="252" y="238" font-family="Georgia, 'Times New Roman', 'Iowan Old Style', serif" font-size="21" fill="#ffffff" text-anchor="middle">knows</text>
+    <rect x="446" y="150" width="166" height="132" rx="2" fill="#ffffff" stroke="#cfd9e4" stroke-width="1.5"/>
+    <text x="529" y="210" font-family="Georgia, 'Times New Roman', 'Iowan Old Style', serif" font-size="21" fill="#5c6b7a" text-anchor="middle">your</text>
+    <text x="529" y="238" font-family="Georgia, 'Times New Roman', 'Iowan Old Style', serif" font-size="21" fill="#5c6b7a" text-anchor="middle">data</text>
+    <rect x="362" y="211" width="8" height="10" rx="1" fill="#b8481a"/>
+    <rect x="379" y="211" width="8" height="10" rx="1" fill="#b8481a"/>
+    <rect x="396" y="211" width="8" height="10" rx="1" fill="#b8481a"/>
+    <rect x="413" y="211" width="8" height="10" rx="1" fill="#b8481a"/>
   </g>
 </svg>

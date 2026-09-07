@@ -1,37 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-labelledby="t">
   <title id="t">A generic tokenizer cuts acetylcholinesterase into six tokens; a tokenizer trained on medical text cuts the same word into three</title>
   <!--
-    Both rows span the same width because it is the same word. The only
-    difference the eye sees is how many times it was cut, which is the whole
-    argument. Sized for the 104x68 list thumbnail, which keeps only x 85-635
-    and scales down about 7x, so the blocks carry it and the text is a bonus.
+    Treated as a cover: paper ground with a faint dot grid, one serif word,
+    hairline rules, and the counts set as serif numerals. Both rows span the
+    same width because it is the same word, so the eye reads the number of
+    cuts. Filled blocks rather than hairline cut marks, because the 104x68
+    list thumbnail scales this down about 7x and thin marks disappear.
   -->
+  <defs>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="1.4" cy="1.4" r="1.4" fill="#1d2b3a" opacity="0.07"/>
+    </pattern>
+  </defs>
   <rect width="720" height="360" fill="#eef2f6"/>
-  <g font-family="ui-sans-serif, system-ui, sans-serif">
-    <text x="130" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#26364a">acetylcholinesterase</text>
-    <text x="620" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7d8a99">tokens</text>
-    <text x="130" y="82" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7d8a99" letter-spacing="1">GENERIC TOKENIZER</text>
-    <rect x="130.0" y="96" width="43.5" height="54" rx="4" fill="#c3d6ea"/>
-    <text x="151.8" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">ac</text>
-    <rect x="180.5" y="96" width="87.0" height="54" rx="4" fill="#c3d6ea"/>
-    <text x="224.0" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">etyl</text>
-    <rect x="274.5" y="96" width="43.5" height="54" rx="4" fill="#c3d6ea"/>
-    <text x="296.2" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">ch</text>
-    <rect x="325.0" y="96" width="87.0" height="54" rx="4" fill="#c3d6ea"/>
-    <text x="368.5" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">olin</text>
-    <rect x="419.0" y="96" width="108.8" height="54" rx="4" fill="#c3d6ea"/>
-    <text x="473.4" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">ester</text>
-    <rect x="534.8" y="96" width="65.2" height="54" rx="4" fill="#c3d6ea"/>
-    <text x="567.4" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#26364a" text-anchor="middle">ase</text>
-    <text x="620" y="132" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="30" fill="#7d8a99" font-weight="400">6</text>
-    <text x="130" y="204" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7d8a99" letter-spacing="1">DOMAIN TOKENIZER</text>
-    <rect x="130.0" y="218" width="136.8" height="54" rx="4" fill="#2f5c8f"/>
-    <text x="198.4" y="253" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#eef2f6" text-anchor="middle">acetyl</text>
-    <rect x="273.8" y="218" width="91.2" height="54" rx="4" fill="#2f5c8f"/>
-    <text x="319.4" y="253" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#eef2f6" text-anchor="middle">chol</text>
-    <rect x="372.0" y="218" width="228.0" height="54" rx="4" fill="#2f5c8f"/>
-    <text x="486.0" y="253" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#eef2f6" text-anchor="middle">inesterase</text>
-    <text x="620" y="254" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="30" fill="#b8481a" font-weight="700">3</text>
-    <text x="130" y="322" font-size="19" fill="#26364a">Same word. Same 16,000 tokens. Different corpus.</text>
+  <rect width="720" height="360" fill="url(#dots)"/>
+  <g>
+    <text x="118" y="70" font-family="Georgia, 'Times New Roman', 'Iowan Old Style', serif" font-size="30" fill="#1d2b3a" font-style="italic">acetylcholinesterase</text>
+    <rect x="118" y="86" width="494" height="1" fill="#cfd9e4"/>
+    <text x="118" y="124" font-family="Georgia, 'Times New Roman', 'Iowan Old Style', serif" font-size="18" fill="#93a1af" letter-spacing="2">GENERIC</text>
+    <rect x="118.0" y="136" width="42.2" height="50" rx="2" fill="#ffffff" stroke="#cfd9e4" stroke-width="1.5"/>
+    <text x="139.1" y="168" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#5c6b7a" text-anchor="middle">ac</text>
+    <rect x="166.2" y="136" width="84.4" height="50" rx="2" fill="#ffffff" stroke="#cfd9e4" stroke-width="1.5"/>
+    <text x="208.4" y="168" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#5c6b7a" text-anchor="middle">etyl</text>
+    <rect x="256.6" y="136" width="42.2" height="50" rx="2" fill="#ffffff" stroke="#cfd9e4" stroke-width="1.5"/>
+    <text x="277.7" y="168" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#5c6b7a" text-anchor="middle">ch</text>
+    <rect x="304.8" y="136" width="84.4" height="50" rx="2" fill="#ffffff" stroke="#cfd9e4" stroke-width="1.5"/>
+    <text x="347.0" y="168" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#5c6b7a" text-anchor="middle">olin</text>
+    <rect x="395.2" y="136" width="105.5" height="50" rx="2" fill="#ffffff" stroke="#cfd9e4" stroke-width="1.5"/>
+    <text x="448.0" y="168" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#5c6b7a" text-anchor="middle">ester</text>
+    <rect x="506.7" y="136" width="63.3" height="50" rx="2" fill="#ffffff" stroke="#cfd9e4" stroke-width="1.5"/>
+    <text x="538.4" y="168" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#5c6b7a" text-anchor="middle">ase</text>
+    <text x="612" y="174" font-family="Georgia, 'Times New Roman', 'Iowan Old Style', serif" font-size="38" fill="#93a1af" text-anchor="end">6</text>
+    <rect x="118" y="212" width="494" height="1" fill="#cfd9e4"/>
+    <text x="118" y="248" font-family="Georgia, 'Times New Roman', 'Iowan Old Style', serif" font-size="18" fill="#93a1af" letter-spacing="2">DOMAIN</text>
+    <rect x="118.0" y="260" width="132.0" height="50" rx="2" fill="#2f5c8f"/>
+    <text x="184.0" y="292" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#ffffff" text-anchor="middle">acetyl</text>
+    <rect x="256.0" y="260" width="88.0" height="50" rx="2" fill="#2f5c8f"/>
+    <text x="300.0" y="292" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#ffffff" text-anchor="middle">chol</text>
+    <rect x="350.0" y="260" width="220.0" height="50" rx="2" fill="#2f5c8f"/>
+    <text x="460.0" y="292" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#ffffff" text-anchor="middle">inesterase</text>
+    <text x="612" y="298" font-family="Georgia, 'Times New Roman', 'Iowan Old Style', serif" font-size="38" fill="#b8481a" text-anchor="end">3</text>
   </g>
 </svg>
