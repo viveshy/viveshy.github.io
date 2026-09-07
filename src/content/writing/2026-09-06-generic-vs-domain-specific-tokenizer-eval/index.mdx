@@ -11,8 +11,8 @@ import TrainingDiagram from './images/tokenizer-training.svg';
 
 ## Overview
 
-LLM does not understand the words as humans do. For LLM, everything is a token,
-which is created by the Tokenizer. The Tokenizer splits input texts into tokens
+An LLM does not understand the words as humans do. For an LLM, everything is a token,
+which is created by the Tokenizer. The Tokenizer splits input text into tokens
 and assigns an id to each token, which is called the token id. This process is
 called tokenization. 
 
@@ -26,8 +26,8 @@ A simple flow to understand tokenization is this:
 > *FYI: the process explained here is for a trained tokenizer and a trained
 > model, not during training.*
 
-So, every token is represented as an embedding vector and the llm needs to
-process it. More tokens means more computation cost. So we need an efficient
+So, every token is represented as an embedding vector and the LLM needs to
+process it. More tokens mean more computation cost. So we need an efficient
 tokenizer, one that covers the same text in fewer tokens.
 
 
@@ -52,15 +52,15 @@ trained on.
 
 There is a mathematical way to measure the efficiency of a tokenizer. The
 average number of tokens per word is called fertility. The ideal fertility is 1, 
-which is only theoretical.Normally it is around 1.2.
+which is only theoretical. Normally it is around 1.2.
 
 Rule of thumb:
-**Lower the fertility,better the tokenizer**.
+**Lower the fertility, better the tokenizer**.
 
 ## Generic Tokenizer
 
-Claude and GPT use a generic tokenizer. Its corpus was general text from the
-web. That is the right choice for them, because most text people send an LLM is
+Claude and GPT use generic tokenizers. Their corpora were general text from
+the web. That is the right choice for them, because most text people send an LLM is
 general text, and on general text these tokenizers are very good. GPT-4's
 tokenizer has a fertility of 1.173 there, which is close to one token per word.
 
@@ -86,7 +86,7 @@ medicine. It is rebuilding a medical word out of leftovers from everyday
 English.
 
 So what does this lead to? It leads to a large number of tokens, and more
-tokens means more computation cost.
+tokens mean more computation cost.
 
 Can a domain specific tokenizer fix this? Let us not assume it. We will train
 two tokenizers, `custom-med-bpe` and `custom-general-bpe`, and find out.
