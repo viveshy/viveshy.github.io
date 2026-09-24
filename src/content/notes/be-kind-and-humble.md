@@ -7,8 +7,8 @@ draft: false
 
 I have spent four years in tech. Like most people who start out, I
 wanted to be good at the work. I still do. But somewhere in those years
-I realized that I don't want to be remembered as a good engineer. I want
-to be remembered as a good human being.
+I realized that I want to be remembered not only as a good engineer,
+but equally as a good human being.
 
 If I can help someone, I will. Even when I cannot, I can still treat
 them well. Everyone deserves kindness, respect and dignity.
@@ -38,4 +38,5 @@ them well. Everyone deserves kindness, respect and dignity.
    meeting. Most of us remember when it was done to us.
 
 At the end of the day, everything is temporary. The code, the titles and
-the projects will be forgotten. The way you treat others defines you.
+the projects will be forgotten. The way you treat others defines you,
+and that's how people remember you.
