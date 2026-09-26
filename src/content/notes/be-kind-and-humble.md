@@ -6,36 +6,55 @@ draft: false
 ---
 
 I have spent four years in tech. Like most people who start out, I
-wanted to be good at the work. I still do. But somewhere in those years
-I realized that I want to be remembered not only as a good engineer,
-but equally as a good human being.
+wanted to be good at the work. I still do. But over time, I realized
+something else matters just as much. I want to be remembered not only
+as a good engineer, but as a good human being.
 
 If I can help someone, I will. Even when I cannot, I can still treat
-them well. Everyone deserves kindness, respect and dignity.
+them well. Everyone deserves kindness, respect, and dignity.
 
-1. **Always show kindness.** We all have days when we are busy, or when
-   someone has already irritated us. Then another person turns up with a
-   question, and a short, cold answer is the easy option. I have been on
-   both sides of that moment. Feeling irritated is natural, and you do
-   not have to hide it. But nobody deserves rudeness just because your
-   day is going badly. If your kindness can make someone happy, show it.
-   Be the person who brings warmth to others.
+Here are a few things I try to remind myself of:
+
+1. **Always show kindness.** We all have bad days. We get busy. We get
+   frustrated. Sometimes someone asks a question at exactly the wrong
+   time, and giving a short, cold answer feels like the easiest thing
+   to do. I have been on both sides of that moment.
+
+   Feeling irritated is natural. But someone else does not deserve your
+   rudeness because your day is going badly. If your kindness can make
+   someone's day a little better, show it. Be the person who brings
+   warmth to others.
+
 2. **Never lose your respect for anyone.** Some people will be rude to
-   you. Some will not support you when you need it. It stings, and it is
-   tempting to give it back. I have felt that pull. But their behavior
-   belongs to them, not to you. It is not personal, and giving it back
-   only makes you awful too. The way you treat others defines you.
-3. **Be humble.** The more you learn, the more you realize that nothing
-   is complex. Anything in tech can be learned. Whatever you know today,
-   there was a day when you did not. So there is nothing to boast about.
-   Do not be arrogant about what you know, and never look down on someone
-   who makes a mistake or seeks your guidance. Help them instead.
-4. **Everyone has dignity.** You will work with colleagues who know less
-   than you. Most of them already know it, and it worries them more than
-   they show. You don't have to make them feel it. If they ask for
-   feedback, give it honestly and in private. Do not hold a grudge over
-   what someone cannot do yet. And never make anyone feel small in a
-   meeting. Most of us remember when it was done to us.
+   you. Some will not support you when you need them. It hurts, and your
+   first instinct may be to give it back. I have felt that pull too.
+
+   But how someone treats you is their choice. How you respond is yours.
+   You do not have to become rude because someone was rude to you. You
+   do not have to lose your respect for someone because they lost theirs
+   for you.
+
+   Do not let someone else's behavior change the person you want to be.
+
+3. **Be humble.** The more you learn, the more you realize how much
+   there is still to learn. Whatever you know today, there was a time
+   when you did not know it. Someone taught you. Someone helped you. Or
+   you struggled through it yourself. So there is nothing to be arrogant
+   about.
+
+   Do not look down on someone because they do not know something you
+   know. If you can teach them, teach them. If they make a mistake, help
+   them learn from it. You were once there too.
+
+4. **Everyone has dignity.** You will work with people who know less
+   than you. Some will make mistakes. Some will take longer to learn.
+   Some may need more help than others. Most of them already know it.
+   You do not need to make them feel it.
+
+   If someone asks for feedback, give it honestly. But give it with
+   respect, preferably in private. Never make someone feel small in
+   front of others just to prove that you know more. Most of us remember
+   what it felt like when someone did that to us.
 
 At the end of the day, everything is temporary. The code, the titles and
 the projects will be forgotten. The way you treat others defines you,
