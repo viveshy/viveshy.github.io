@@ -1,5 +1,5 @@
 ---
-title: Be Kind and Humble
+title: More Than a Good Engineer
 description: The way you treat others defines you.
 pubDate: 2026-09-23
 draft: false
