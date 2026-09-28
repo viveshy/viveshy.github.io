@@ -1,6 +1,6 @@
 ---
-title: Invest In Relationships
-description: Work is done by people.
+title: Build Genuine Relationships
+description: You need people who encourage you, support you, and stand by you.
 pubDate: 2026-09-26
 draft: false
 ---
@@ -15,9 +15,11 @@ fake it. I do not mean you should go after every person in the
 organization and forcefully build relationships. No. It's not like that.
 
 You should have a good relationship with your manager, your lead, your
-juniors, and your teammates. Be someone people can talk to, trust, and
-rely on. Over time, if you do this genuinely, you will probably earn two
-or three genuine friends along the way. And that matters.
+juniors, and your teammates. You cannot have one with everyone, but try
+to have one with as many of them as you can. Be someone people can talk
+to, trust, and rely on. Over time, if you do this genuinely, you will
+probably earn two or three genuine friends along the way. And that
+matters.
 
 You cannot do everything alone. There will be times when you are behind
 a deadline and need someone to help you. There will be times when you are
